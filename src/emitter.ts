@@ -845,7 +845,7 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
         p.required === undefined || p.required === 1 ? "" : "?";
       pType = p.nullable ? makeNullable(pType) : pType;
       const readOnlyModifier =
-        p["read-only"] === 1 && prefix === "" ? "readonly " : "";
+        p["read-only"] === 1 && prefix === "" ? "+" : "";
       printLine(
         `${prefix}${readOnlyModifier}${p.name}${requiredModifier}: ${pType};`
       );
