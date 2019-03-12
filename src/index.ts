@@ -51,7 +51,7 @@ function emitDom() {
     __SOURCE_DIRECTORY__,
     "../",
     "generated",
-    "flow-typed"
+    "lib"
   );
 
   // Create output folder
