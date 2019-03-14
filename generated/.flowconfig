@@ -3,9 +3,11 @@
 [include]
 
 [libs]
+lib
 
 [lints]
 
 [options]
+no_flowlib=true
 
 [strict]

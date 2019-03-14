@@ -2,75 +2,74 @@
 /// Worker APIs
 /////////////////////////////
 
-declare class AddEventListenerOptions extends EventListenerOptions {
+declare type AddEventListenerOptions = interface extends EventListenerOptions {
     once?: boolean;
     passive?: boolean;
 }
 
-declare class AesCbcParams extends Algorithm {
+declare type AesCbcParams = interface extends Algorithm {
     iv: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer;
 }
 
-declare class AesCtrParams extends Algorithm {
+declare type AesCtrParams = interface extends Algorithm {
     counter: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer;
     length: number;
 }
 
-declare class AesDerivedKeyParams extends Algorithm {
+declare type AesDerivedKeyParams = interface extends Algorithm {
     length: number;
 }
 
-declare class AesGcmParams extends Algorithm {
+declare type AesGcmParams = interface extends Algorithm {
     additionalData?: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer;
     iv: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer;
     tagLength?: number;
 }
 
-declare class AesKeyAlgorithm extends KeyAlgorithm {
+declare type AesKeyAlgorithm = interface extends KeyAlgorithm {
     length: number;
 }
 
-declare class AesKeyGenParams extends Algorithm {
+declare type AesKeyGenParams = interface extends Algorithm {
     length: number;
 }
 
-declare class Algorithm {
+declare type Algorithm = interface {
     name: string;
 }
 
-declare class BlobPropertyBag {
+declare type BlobPropertyBag = interface {
     endings?: EndingType;
     type?: string;
 }
 
-declare class CacheQueryOptions {
-    cacheName?: string;
+declare type CacheQueryOptions = interface {
     ignoreMethod?: boolean;
     ignoreSearch?: boolean;
     ignoreVary?: boolean;
 }
 
-declare class ClientQueryOptions {
+declare type ClientQueryOptions = interface {
     includeUncontrolled?: boolean;
     type?: ClientTypes;
 }
 
-declare class CloseEventInit extends EventInit {
+declare type CloseEventInit = interface extends EventInit {
     code?: number;
     reason?: string;
     wasClean?: boolean;
 }
 
-declare class CryptoKeyPair {
+declare type CryptoKeyPair = interface {
     privateKey?: CryptoKey;
     publicKey?: CryptoKey;
 }
 
-declare class CustomEventInit<T = any> extends EventInit {
+declare type CustomEventInit<T = any> = interface extends EventInit {
     detail?: T;
 }
 
-declare class DOMMatrix2DInit {
+declare type DOMMatrix2DInit = interface {
     a?: number;
     b?: number;
     c?: number;
@@ -85,7 +84,7 @@ declare class DOMMatrix2DInit {
     m42?: number;
 }
 
-declare class DOMMatrixInit extends DOMMatrix2DInit {
+declare type DOMMatrixInit = interface extends DOMMatrix2DInit {
     is2D?: boolean;
     m13?: number;
     m14?: number;
@@ -99,44 +98,44 @@ declare class DOMMatrixInit extends DOMMatrix2DInit {
     m44?: number;
 }
 
-declare class DOMPointInit {
+declare type DOMPointInit = interface {
     w?: number;
     x?: number;
     y?: number;
     z?: number;
 }
 
-declare class DOMQuadInit {
+declare type DOMQuadInit = interface {
     p1?: DOMPointInit;
     p2?: DOMPointInit;
     p3?: DOMPointInit;
     p4?: DOMPointInit;
 }
 
-declare class DOMRectInit {
+declare type DOMRectInit = interface {
     height?: number;
     width?: number;
     x?: number;
     y?: number;
 }
 
-declare class EcKeyGenParams extends Algorithm {
+declare type EcKeyGenParams = interface extends Algorithm {
     namedCurve: NamedCurve;
 }
 
-declare class EcKeyImportParams extends Algorithm {
+declare type EcKeyImportParams = interface extends Algorithm {
     namedCurve: NamedCurve;
 }
 
-declare class EcdhKeyDeriveParams extends Algorithm {
+declare type EcdhKeyDeriveParams = interface extends Algorithm {
     public: CryptoKey;
 }
 
-declare class EcdsaParams extends Algorithm {
+declare type EcdsaParams = interface extends Algorithm {
     hash: HashAlgorithmIdentifier;
 }
 
-declare class ErrorEventInit extends EventInit {
+declare type ErrorEventInit = interface extends EventInit {
     colno?: number;
     error?: any;
     filename?: string;
@@ -144,20 +143,24 @@ declare class ErrorEventInit extends EventInit {
     message?: string;
 }
 
-declare class EventInit {
+declare type EventInit = interface {
     bubbles?: boolean;
     cancelable?: boolean;
     composed?: boolean;
 }
 
-declare class EventListenerOptions {
+declare type EventListenerOptions = interface {
     capture?: boolean;
 }
 
-declare class ExtendableEventInit extends EventInit {
+declare type EventSourceInit = interface {
+    withCredentials?: boolean;
 }
 
-declare class ExtendableMessageEventInit extends ExtendableEventInit {
+declare type ExtendableEventInit = interface extends EventInit {
+}
+
+declare type ExtendableMessageEventInit = interface extends ExtendableEventInit {
     data?: any;
     lastEventId?: string;
     origin?: string;
@@ -165,48 +168,48 @@ declare class ExtendableMessageEventInit extends ExtendableEventInit {
     source?: Client | ServiceWorker | MessagePort | null;
 }
 
-declare class FetchEventInit extends ExtendableEventInit {
+declare type FetchEventInit = interface extends ExtendableEventInit {
     clientId?: string;
     preloadResponse?: Promise<any>;
+    replacesClientId?: string;
     request: Request;
     resultingClientId?: string;
-    targetClientId?: string;
 }
 
-declare class FilePropertyBag extends BlobPropertyBag {
+declare type FilePropertyBag = interface extends BlobPropertyBag {
     lastModified?: number;
 }
 
-declare class GetNotificationOptions {
+declare type GetNotificationOptions = interface {
     tag?: string;
 }
 
-declare class HmacImportParams extends Algorithm {
+declare type HmacImportParams = interface extends Algorithm {
     hash: HashAlgorithmIdentifier;
     length?: number;
 }
 
-declare class HmacKeyGenParams extends Algorithm {
+declare type HmacKeyGenParams = interface extends Algorithm {
     hash: HashAlgorithmIdentifier;
     length?: number;
 }
 
-declare class IDBIndexParameters {
+declare type IDBIndexParameters = interface {
     multiEntry?: boolean;
     unique?: boolean;
 }
 
-declare class IDBObjectStoreParameters {
+declare type IDBObjectStoreParameters = interface {
     autoIncrement?: boolean;
     keyPath?: string | string[] | null;
 }
 
-declare class IDBVersionChangeEventInit extends EventInit {
+declare type IDBVersionChangeEventInit = interface extends EventInit {
     newVersion?: number | null;
     oldVersion?: number;
 }
 
-declare class JsonWebKey {
+declare type JsonWebKey = interface {
     alg?: string;
     crv?: string;
     d?: string;
@@ -227,11 +230,11 @@ declare class JsonWebKey {
     y?: string;
 }
 
-declare class KeyAlgorithm {
+declare type KeyAlgorithm = interface {
     name: string;
 }
 
-declare class MessageEventInit extends EventInit {
+declare type MessageEventInit = interface extends EventInit {
     data?: any;
     lastEventId?: string;
     origin?: string;
@@ -239,23 +242,27 @@ declare class MessageEventInit extends EventInit {
     source?: MessageEventSource | null;
 }
 
-declare class NavigationPreloadState {
+declare type MultiCacheQueryOptions = interface extends CacheQueryOptions {
+    cacheName?: string;
+}
+
+declare type NavigationPreloadState = interface {
     enabled?: boolean;
     headerValue?: string;
 }
 
-declare class NotificationAction {
+declare type NotificationAction = interface {
     action: string;
     icon?: string;
     title: string;
 }
 
-declare class NotificationEventInit extends ExtendableEventInit {
+declare type NotificationEventInit = interface extends ExtendableEventInit {
     action?: string;
     notification: Notification;
 }
 
-declare class NotificationOptions {
+declare type NotificationOptions = interface {
     actions?: NotificationAction[];
     badge?: string;
     body?: string;
@@ -272,66 +279,66 @@ declare class NotificationOptions {
     vibrate?: VibratePattern;
 }
 
-declare class Pbkdf2Params extends Algorithm {
+declare type Pbkdf2Params = interface extends Algorithm {
     hash: HashAlgorithmIdentifier;
     iterations: number;
     salt: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer;
 }
 
-declare class PerformanceObserverInit {
+declare type PerformanceObserverInit = interface {
     buffered?: boolean;
     entryTypes: string[];
 }
 
-declare class PipeOptions {
+declare type PipeOptions = interface {
     preventAbort?: boolean;
     preventCancel?: boolean;
     preventClose?: boolean;
 }
 
-declare class ProgressEventInit extends EventInit {
+declare type ProgressEventInit = interface extends EventInit {
     lengthComputable?: boolean;
     loaded?: number;
     total?: number;
 }
 
-declare class PromiseRejectionEventInit extends EventInit {
+declare type PromiseRejectionEventInit = interface extends EventInit {
     promise: Promise<any>;
     reason?: any;
 }
 
-declare class PushEventInit extends ExtendableEventInit {
+declare type PushEventInit = interface extends ExtendableEventInit {
     data?: PushMessageDataInit;
 }
 
-declare class PushSubscriptionChangeInit extends ExtendableEventInit {
+declare type PushSubscriptionChangeInit = interface extends ExtendableEventInit {
     newSubscription?: PushSubscription;
     oldSubscription?: PushSubscription;
 }
 
-declare class PushSubscriptionJSON {
+declare type PushSubscriptionJSON = interface {
     endpoint?: string;
     expirationTime?: number | null;
     keys?: Record<string, string>;
 }
 
-declare class PushSubscriptionOptionsInit {
+declare type PushSubscriptionOptionsInit = interface {
     applicationServerKey?: BufferSource | string | null;
     userVisibleOnly?: boolean;
 }
 
-declare class QueuingStrategy<T = any> {
+declare type QueuingStrategy<T = any> = interface {
     highWaterMark?: number;
-    size?: QueuingStrategySizeCallback<T>;
+    +size?: QueuingStrategySizeCallback<T>;
 }
 
-declare class RegistrationOptions {
+declare type RegistrationOptions = interface {
     scope?: string;
     type?: WorkerType;
     updateViaCache?: ServiceWorkerUpdateViaCache;
 }
 
-declare class RequestInit {
+declare type RequestInit = interface {
     body?: BodyInit | null;
     cache?: RequestCache;
     credentials?: RequestCredentials;
@@ -347,67 +354,67 @@ declare class RequestInit {
     window?: any;
 }
 
-declare class ResponseInit {
+declare type ResponseInit = interface {
     headers?: HeadersInit;
     status?: number;
     statusText?: string;
 }
 
-declare class RsaHashedImportParams extends Algorithm {
+declare type RsaHashedImportParams = interface extends Algorithm {
     hash: HashAlgorithmIdentifier;
 }
 
-declare class RsaHashedKeyGenParams extends RsaKeyGenParams {
+declare type RsaHashedKeyGenParams = interface extends RsaKeyGenParams {
     hash: HashAlgorithmIdentifier;
 }
 
-declare class RsaKeyGenParams extends Algorithm {
+declare type RsaKeyGenParams = interface extends Algorithm {
     modulusLength: number;
     publicExponent: BigInteger;
 }
 
-declare class RsaOaepParams extends Algorithm {
+declare type RsaOaepParams = interface extends Algorithm {
     label?: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer;
 }
 
-declare class RsaOtherPrimesInfo {
+declare type RsaOtherPrimesInfo = interface {
     d?: string;
     r?: string;
     t?: string;
 }
 
-declare class RsaPssParams extends Algorithm {
+declare type RsaPssParams = interface extends Algorithm {
     saltLength: number;
 }
 
-declare class StorageEstimate {
+declare type StorageEstimate = interface {
     quota?: number;
     usage?: number;
 }
 
-declare class SyncEventInit extends ExtendableEventInit {
+declare type SyncEventInit = interface extends ExtendableEventInit {
     lastChance?: boolean;
     tag: string;
 }
 
-declare class TextDecodeOptions {
+declare type TextDecodeOptions = interface {
     stream?: boolean;
 }
 
-declare class TextDecoderOptions {
+declare type TextDecoderOptions = interface {
     fatal?: boolean;
     ignoreBOM?: boolean;
 }
 
-declare class Transformer<I = any, O = any> {
+declare type Transformer<I = any, O = any> = interface {
     flush?: TransformStreamDefaultControllerCallback<O>;
-    readableType?: undefined;
+    readableType?: void;
     start?: TransformStreamDefaultControllerCallback<O>;
     transform?: TransformStreamDefaultControllerTransformCallback<I, O>;
-    writableType?: undefined;
+    writableType?: void;
 }
 
-declare class UnderlyingByteSource {
+declare type UnderlyingByteSource = interface {
     autoAllocateChunkSize?: number;
     cancel?: ReadableStreamErrorCallback;
     pull?: ReadableByteStreamControllerCallback;
@@ -415,22 +422,22 @@ declare class UnderlyingByteSource {
     type: "bytes";
 }
 
-declare class UnderlyingSink<W = any> {
+declare type UnderlyingSink<W = any> = interface {
     abort?: WritableStreamErrorCallback;
     close?: WritableStreamDefaultControllerCloseCallback;
     start?: WritableStreamDefaultControllerStartCallback;
-    type?: undefined;
+    type?: void;
     write?: WritableStreamDefaultControllerWriteCallback<W>;
 }
 
-declare class UnderlyingSource<R = any> {
+declare type UnderlyingSource<R = any> = interface {
     cancel?: ReadableStreamErrorCallback;
     pull?: ReadableStreamDefaultControllerCallback<R>;
     start?: ReadableStreamDefaultControllerCallback<R>;
-    type?: undefined;
+    type?: void;
 }
 
-declare class WebGLContextAttributes {
+declare type WebGLContextAttributes = interface {
     alpha?: GLboolean;
     antialias?: GLboolean;
     depth?: GLboolean;
@@ -441,11 +448,11 @@ declare class WebGLContextAttributes {
     stencil?: GLboolean;
 }
 
-declare class WebGLContextEventInit extends EventInit {
+declare type WebGLContextEventInit = interface extends EventInit {
     statusMessage?: string;
 }
 
-declare class WorkerOptions {
+declare type WorkerOptions = interface {
     credentials?: RequestCredentials;
     name?: string;
     type?: WorkerType;
@@ -455,7 +462,7 @@ interface EventListener {
     (evt: Event): void;
 }
 
-declare class ANGLE_instanced_arrays {
+declare type ANGLE_instanced_arrays = interface {
     drawArraysInstancedANGLE(mode: GLenum, first: GLint, count: GLsizei, primcount: GLsizei): void;
     drawElementsInstancedANGLE(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr, primcount: GLsizei): void;
     vertexAttribDivisorANGLE(index: GLuint, divisor: GLuint): void;
@@ -463,6 +470,7 @@ declare class ANGLE_instanced_arrays {
 }
 
 declare class AbortController {
+    constructor(): this;
     /**
      * Returns the AbortSignal object associated with this object.
      */
@@ -474,65 +482,54 @@ declare class AbortController {
     abort(): void;
 }
 
-declare var AbortController: {
-    prototype: AbortController;
-    new(): AbortController;
-};
-
-interface AbortSignalEventMap {
-    "abort": ProgressEvent;
+type AbortSignalEventMap = & {
+    "abort": Event,
+    [key: string]: Event,
 }
 
-declare class AbortSignal extends EventTarget {
+declare class AbortSignal mixins EventTarget {
+    constructor(): this;
     /**
      * Returns true if this AbortSignal's AbortController has signaled to abort, and false
      * otherwise.
      */
     +aborted: boolean;
-    onabort: ((this: AbortSignal, ev: ProgressEvent) => any) | null;
-    addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    onabort: ((/*this: AbortSignal, */ev: Event) => any) | null;
+    addEventListener<K: $Keys<AbortSignalEventMap>>(type: K, listener: (/*this: AbortSignal, */ev: $ElementType<AbortSignalEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<AbortSignalEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<AbortSignalEventMap>>(type: K, listener: (/*this: AbortSignal, */ev: $ElementType<AbortSignalEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<AbortSignalEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var AbortSignal: {
-    prototype: AbortSignal;
-    new(): AbortSignal;
-};
-
-interface AbstractWorkerEventMap {
-    "error": ErrorEvent;
+type AbstractWorkerEventMap = & {
+    "error": ErrorEvent,
+    [key: string]: Event,
 }
 
-declare class AbstractWorker {
-    onerror: ((this: AbstractWorker, ev: ErrorEvent) => any) | null;
-    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+declare type AbstractWorker = interface {
+    onerror: ((/*this: AbstractWorker, */ev: ErrorEvent) => any) | null;
+    addEventListener<K: $Keys<AbstractWorkerEventMap>>(type: K, listener: (/*this: AbstractWorker, */ev: $ElementType<AbstractWorkerEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<AbstractWorkerEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<AbstractWorkerEventMap>>(type: K, listener: (/*this: AbstractWorker, */ev: $ElementType<AbstractWorkerEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<AbstractWorkerEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare class AesCfbParams extends Algorithm {
+declare type AesCfbParams = interface extends Algorithm {
     iv: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer;
 }
 
-declare class AesCmacParams extends Algorithm {
+declare type AesCmacParams = interface extends Algorithm {
     length: number;
 }
 
 declare class Blob {
+    constructor(blobParts?: BlobPart[], options?: BlobPropertyBag): this;
     +size: number;
     +type: string;
     slice(start?: number, end?: number, contentType?: string): Blob;
 }
 
-declare var Blob: {
-    prototype: Blob;
-    new(blobParts?: BlobPart[], options?: BlobPropertyBag): Blob;
-};
-
-declare class Body {
+declare type Body = interface {
     +body: ReadableStream<Uint8Array> | null;
     +bodyUsed: boolean;
     arrayBuffer(): Promise<ArrayBuffer>;
@@ -542,18 +539,20 @@ declare class Body {
     text(): Promise<string>;
 }
 
-interface BroadcastChannelEventMap {
-    "message": MessageEvent;
-    "messageerror": MessageEvent;
+type BroadcastChannelEventMap = & {
+    "message": MessageEvent,
+    "messageerror": MessageEvent,
+    [key: string]: Event,
 }
 
-declare class BroadcastChannel extends EventTarget {
+declare class BroadcastChannel mixins EventTarget {
+    constructor(name: string): this;
     /**
      * Returns the channel name (as passed to the constructor).
      */
     +name: string;
-    onmessage: ((this: BroadcastChannel, ev: MessageEvent) => any) | null;
-    onmessageerror: ((this: BroadcastChannel, ev: MessageEvent) => any) | null;
+    onmessage: ((/*this: BroadcastChannel, */ev: MessageEvent) => any) | null;
+    onmessageerror: ((/*this: BroadcastChannel, */ev: MessageEvent) => any) | null;
     /**
      * Closes the BroadcastChannel object, opening it up to garbage collection.
      */
@@ -562,61 +561,40 @@ declare class BroadcastChannel extends EventTarget {
      * Sends the given message to other BroadcastChannel objects set up for this channel. Messages can be structured objects, e.g. nested objects and arrays.
      */
     postMessage(message: any): void;
-    addEventListener<K extends keyof BroadcastChannelEventMap>(type: K, listener: (this: BroadcastChannel, ev: BroadcastChannelEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof BroadcastChannelEventMap>(type: K, listener: (this: BroadcastChannel, ev: BroadcastChannelEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<BroadcastChannelEventMap>>(type: K, listener: (/*this: BroadcastChannel, */ev: $ElementType<BroadcastChannelEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<BroadcastChannelEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<BroadcastChannelEventMap>>(type: K, listener: (/*this: BroadcastChannel, */ev: $ElementType<BroadcastChannelEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<BroadcastChannelEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var BroadcastChannel: {
-    prototype: BroadcastChannel;
-    new(name: string): BroadcastChannel;
-};
-
-declare class BroadcastChannelEventMap {
-    message: MessageEvent;
-    messageerror: MessageEvent;
-}
-
-declare class ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
+declare class ByteLengthQueuingStrategy implements QueuingStrategy<ArrayBufferView> {
+    constructor(options: { highWaterMark: number }): ByteLengthQueuingStrategy;
     highWaterMark: number;
     size(chunk: ArrayBufferView): number;
 }
 
-declare var ByteLengthQueuingStrategy: {
-    prototype: ByteLengthQueuingStrategy;
-    new(options: { highWaterMark: number }): ByteLengthQueuingStrategy;
-};
-
 declare class Cache {
+    constructor(): this;
     add(request: RequestInfo): Promise<void>;
     addAll(requests: RequestInfo[]): Promise<void>;
     delete(request: RequestInfo, options?: CacheQueryOptions): Promise<boolean>;
     keys(request?: RequestInfo, options?: CacheQueryOptions): Promise<ReadonlyArray<Request>>;
-    match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>;
+    match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | void>;
     matchAll(request?: RequestInfo, options?: CacheQueryOptions): Promise<ReadonlyArray<Response>>;
     put(request: RequestInfo, response: Response): Promise<void>;
 }
 
-declare var Cache: {
-    prototype: Cache;
-    new(): Cache;
-};
-
 declare class CacheStorage {
+    constructor(): this;
     delete(cacheName: string): Promise<boolean>;
     has(cacheName: string): Promise<boolean>;
     keys(): Promise<string[]>;
-    match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>;
+    match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | void>;
     open(cacheName: string): Promise<Cache>;
 }
 
-declare var CacheStorage: {
-    prototype: CacheStorage;
-    new(): CacheStorage;
-};
-
 declare class CanvasGradient {
+    constructor(): this;
     /**
      * Adds a color stop with the given color to the gradient at the given offset. 0.0 is the offset
      * at one end of the gradient, 1.0 is the offset at the other end.
@@ -627,12 +605,7 @@ declare class CanvasGradient {
     addColorStop(offset: number, color: string): void;
 }
 
-declare var CanvasGradient: {
-    prototype: CanvasGradient;
-    new(): CanvasGradient;
-};
-
-declare class CanvasPath {
+declare type CanvasPath = interface {
     arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
     arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
     bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
@@ -645,6 +618,7 @@ declare class CanvasPath {
 }
 
 declare class CanvasPattern {
+    constructor(): this;
     /**
      * Sets the transformation matrix that will be used when rendering the pattern during a fill or
      * stroke painting operation.
@@ -652,36 +626,25 @@ declare class CanvasPattern {
     setTransform(transform?: DOMMatrix2DInit): void;
 }
 
-declare var CanvasPattern: {
-    prototype: CanvasPattern;
-    new(): CanvasPattern;
-};
-
 declare class Client {
+    constructor(): this;
+    +frameType: FrameType;
     +id: string;
     +type: ClientTypes;
     +url: string;
     postMessage(message: any, transfer?: Transferable[]): void;
 }
 
-declare var Client: {
-    prototype: Client;
-    new(): Client;
-};
-
 declare class Clients {
+    constructor(): this;
     claim(): Promise<void>;
     get(id: string): Promise<any>;
     matchAll(options?: ClientQueryOptions): Promise<ReadonlyArray<Client>>;
     openWindow(url: string): Promise<WindowClient | null>;
 }
 
-declare var Clients: {
-    prototype: Clients;
-    new(): Clients;
-};
-
-declare class CloseEvent extends Event {
+declare class CloseEvent mixins Event {
+    constructor(type: string, eventInitDict?: CloseEventInit): this;
     +code: number;
     +reason: string;
     +wasClean: boolean;
@@ -689,12 +652,7 @@ declare class CloseEvent extends Event {
     initCloseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, wasCleanArg: boolean, codeArg: number, reasonArg: string): void;
 }
 
-declare var CloseEvent: {
-    prototype: CloseEvent;
-    new(type: string, eventInitDict?: CloseEventInit): CloseEvent;
-};
-
-declare class ConcatParams extends Algorithm {
+declare type ConcatParams = interface extends Algorithm {
     algorithmId: Uint8Array;
     hash?: string | Algorithm;
     partyUInfo: Uint8Array;
@@ -704,6 +662,7 @@ declare class ConcatParams extends Algorithm {
 }
 
 declare class Console {
+    constructor(): this;
     memory: any;
     assert(condition?: boolean, message?: string, ...data: any[]): void;
     clear(): void;
@@ -731,44 +690,28 @@ declare class Console {
     warn(message?: any, ...optionalParams: any[]): void;
 }
 
-declare var Console: {
-    prototype: Console;
-    new(): Console;
-};
-
-declare class CountQueuingStrategy extends QueuingStrategy {
+declare class CountQueuingStrategy implements QueuingStrategy {
+    constructor(options: { highWaterMark: number }): CountQueuingStrategy;
     highWaterMark: number;
     size(chunk: any): 1;
 }
 
-declare var CountQueuingStrategy: {
-    prototype: CountQueuingStrategy;
-    new(options: { highWaterMark: number }): CountQueuingStrategy;
-};
-
 declare class Crypto {
+    constructor(): this;
     +subtle: SubtleCrypto;
-    getRandomValues<T extends Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | null>(array: T): T;
+    getRandomValues<T: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | null>(array: T): T;
 }
 
-declare var Crypto: {
-    prototype: Crypto;
-    new(): Crypto;
-};
-
 declare class CryptoKey {
+    constructor(): this;
     +algorithm: KeyAlgorithm;
     +extractable: boolean;
     +type: KeyType;
     +usages: KeyUsage[];
 }
 
-declare var CryptoKey: {
-    prototype: CryptoKey;
-    new(): CryptoKey;
-};
-
-declare class CustomEvent<T = any> extends Event {
+declare class CustomEvent<T = any> mixins Event {
+    constructror<T>(typeArg: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
     /**
      * Returns any custom data event was created with.
      * Typically used for synthetic events.
@@ -777,12 +720,33 @@ declare class CustomEvent<T = any> extends Event {
     initCustomEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, detailArg: T): void;
 }
 
-declare var CustomEvent: {
-    prototype: CustomEvent;
-    new<T>(typeArg: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
-};
-
 declare class DOMException {
+    constructor(message?: string, name?: string): DOMException;
+    +ABORT_ERR: number;
+    +DATA_CLONE_ERR: number;
+    +DOMSTRING_SIZE_ERR: number;
+    +HIERARCHY_REQUEST_ERR: number;
+    +INDEX_SIZE_ERR: number;
+    +INUSE_ATTRIBUTE_ERR: number;
+    +INVALID_ACCESS_ERR: number;
+    +INVALID_CHARACTER_ERR: number;
+    +INVALID_MODIFICATION_ERR: number;
+    +INVALID_NODE_TYPE_ERR: number;
+    +INVALID_STATE_ERR: number;
+    +NAMESPACE_ERR: number;
+    +NETWORK_ERR: number;
+    +NOT_FOUND_ERR: number;
+    +NOT_SUPPORTED_ERR: number;
+    +NO_DATA_ALLOWED_ERR: number;
+    +NO_MODIFICATION_ALLOWED_ERR: number;
+    +QUOTA_EXCEEDED_ERR: number;
+    +SECURITY_ERR: number;
+    +SYNTAX_ERR: number;
+    +TIMEOUT_ERR: number;
+    +TYPE_MISMATCH_ERR: number;
+    +URL_MISMATCH_ERR: number;
+    +VALIDATION_ERR: number;
+    +WRONG_DOCUMENT_ERR: number;
     +code: number;
     +message: string;
     +name: string;
@@ -813,37 +777,11 @@ declare class DOMException {
     +WRONG_DOCUMENT_ERR: number;
 }
 
-declare var DOMException: {
-    prototype: DOMException;
-    new(message?: string, name?: string): DOMException;
-    +ABORT_ERR: number;
-    +DATA_CLONE_ERR: number;
-    +DOMSTRING_SIZE_ERR: number;
-    +HIERARCHY_REQUEST_ERR: number;
-    +INDEX_SIZE_ERR: number;
-    +INUSE_ATTRIBUTE_ERR: number;
-    +INVALID_ACCESS_ERR: number;
-    +INVALID_CHARACTER_ERR: number;
-    +INVALID_MODIFICATION_ERR: number;
-    +INVALID_NODE_TYPE_ERR: number;
-    +INVALID_STATE_ERR: number;
-    +NAMESPACE_ERR: number;
-    +NETWORK_ERR: number;
-    +NOT_FOUND_ERR: number;
-    +NOT_SUPPORTED_ERR: number;
-    +NO_DATA_ALLOWED_ERR: number;
-    +NO_MODIFICATION_ALLOWED_ERR: number;
-    +QUOTA_EXCEEDED_ERR: number;
-    +SECURITY_ERR: number;
-    +SYNTAX_ERR: number;
-    +TIMEOUT_ERR: number;
-    +TYPE_MISMATCH_ERR: number;
-    +URL_MISMATCH_ERR: number;
-    +VALIDATION_ERR: number;
-    +WRONG_DOCUMENT_ERR: number;
-};
-
-declare class DOMMatrix extends DOMMatrixReadOnly {
+declare class DOMMatrix mixins DOMMatrixReadOnly {
+    constructor(init?: string | number[]): this;
+    fromFloat32Array(array32: Float32Array): DOMMatrix;
+    fromFloat64Array(array64: Float64Array): DOMMatrix;
+    fromMatrix(other?: DOMMatrixInit): DOMMatrix;
     a: number;
     b: number;
     c: number;
@@ -879,15 +817,11 @@ declare class DOMMatrix extends DOMMatrixReadOnly {
     translateSelf(tx?: number, ty?: number, tz?: number): DOMMatrix;
 }
 
-declare var DOMMatrix: {
-    prototype: DOMMatrix;
-    new(init?: string | number[]): DOMMatrix;
-    fromFloat32Array(array32: Float32Array): DOMMatrix;
-    fromFloat64Array(array64: Float64Array): DOMMatrix;
-    fromMatrix(other?: DOMMatrixInit): DOMMatrix;
-};
-
 declare class DOMMatrixReadOnly {
+    constructor(init?: string | number[]): this;
+    fromFloat32Array(array32: Float32Array): DOMMatrixReadOnly;
+    fromFloat64Array(array64: Float64Array): DOMMatrixReadOnly;
+    fromMatrix(other?: DOMMatrixInit): DOMMatrixReadOnly;
     +a: number;
     +b: number;
     +c: number;
@@ -921,6 +855,8 @@ declare class DOMMatrixReadOnly {
     rotateFromVector(x?: number, y?: number): DOMMatrix;
     scale(scaleX?: number, scaleY?: number, scaleZ?: number, originX?: number, originY?: number, originZ?: number): DOMMatrix;
     scale3d(scale?: number, originX?: number, originY?: number, originZ?: number): DOMMatrix;
+    /** @deprecated */
+    scaleNonUniform(scaleX?: number, scaleY?: number): DOMMatrix;
     skewX(sx?: number): DOMMatrix;
     skewY(sy?: number): DOMMatrix;
     toFloat32Array(): Float32Array;
@@ -930,28 +866,18 @@ declare class DOMMatrixReadOnly {
     translate(tx?: number, ty?: number, tz?: number): DOMMatrix;
 }
 
-declare var DOMMatrixReadOnly: {
-    prototype: DOMMatrixReadOnly;
-    new(init?: string | number[]): DOMMatrixReadOnly;
-    fromFloat32Array(array32: Float32Array): DOMMatrixReadOnly;
-    fromFloat64Array(array64: Float64Array): DOMMatrixReadOnly;
-    fromMatrix(other?: DOMMatrixInit): DOMMatrixReadOnly;
-};
-
-declare class DOMPoint extends DOMPointReadOnly {
+declare class DOMPoint mixins DOMPointReadOnly {
+    constructor(x?: number, y?: number, z?: number, w?: number): this;
+    fromPoint(other?: DOMPointInit): DOMPoint;
     w: number;
     x: number;
     y: number;
     z: number;
 }
 
-declare var DOMPoint: {
-    prototype: DOMPoint;
-    new(x?: number, y?: number, z?: number, w?: number): DOMPoint;
-    fromPoint(other?: DOMPointInit): DOMPoint;
-};
-
 declare class DOMPointReadOnly {
+    constructor(x?: number, y?: number, z?: number, w?: number): this;
+    fromPoint(other?: DOMPointInit): DOMPointReadOnly;
     +w: number;
     +x: number;
     +y: number;
@@ -960,13 +886,10 @@ declare class DOMPointReadOnly {
     toJSON(): any;
 }
 
-declare var DOMPointReadOnly: {
-    prototype: DOMPointReadOnly;
-    new(x?: number, y?: number, z?: number, w?: number): DOMPointReadOnly;
-    fromPoint(other?: DOMPointInit): DOMPointReadOnly;
-};
-
 declare class DOMQuad {
+    constructor(p1?: DOMPointInit, p2?: DOMPointInit, p3?: DOMPointInit, p4?: DOMPointInit): this;
+    fromQuad(other?: DOMQuadInit): DOMQuad;
+    fromRect(other?: DOMRectInit): DOMQuad;
     +p1: DOMPoint;
     +p2: DOMPoint;
     +p3: DOMPoint;
@@ -975,27 +898,18 @@ declare class DOMQuad {
     toJSON(): any;
 }
 
-declare var DOMQuad: {
-    prototype: DOMQuad;
-    new(p1?: DOMPointInit, p2?: DOMPointInit, p3?: DOMPointInit, p4?: DOMPointInit): DOMQuad;
-    fromQuad(other?: DOMQuadInit): DOMQuad;
-    fromRect(other?: DOMRectInit): DOMQuad;
-};
-
-declare class DOMRect extends DOMRectReadOnly {
+declare class DOMRect mixins DOMRectReadOnly {
+    constructor(x?: number, y?: number, width?: number, height?: number): this;
+    fromRect(other?: DOMRectInit): DOMRect;
     height: number;
     width: number;
     x: number;
     y: number;
 }
 
-declare var DOMRect: {
-    prototype: DOMRect;
-    new(x?: number, y?: number, width?: number, height?: number): DOMRect;
-    fromRect(other?: DOMRectInit): DOMRect;
-};
-
 declare class DOMRectReadOnly {
+    constructor(x?: number, y?: number, width?: number, height?: number): this;
+    fromRect(other?: DOMRectInit): DOMRectReadOnly;
     +bottom: number;
     +height: number;
     +left: number;
@@ -1007,13 +921,8 @@ declare class DOMRectReadOnly {
     toJSON(): any;
 }
 
-declare var DOMRectReadOnly: {
-    prototype: DOMRectReadOnly;
-    new(x?: number, y?: number, width?: number, height?: number): DOMRectReadOnly;
-    fromRect(other?: DOMRectInit): DOMRectReadOnly;
-};
-
 declare class DOMStringList {
+    constructor(): this;
     /**
      * Returns the number of strings in strings.
      */
@@ -1030,73 +939,66 @@ declare class DOMStringList {
     [index: number]: string;
 }
 
-declare var DOMStringList: {
-    prototype: DOMStringList;
-    new(): DOMStringList;
-};
-
-interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
-    "message": MessageEvent;
+type DedicatedWorkerGlobalScopeEventMap = WorkerGlobalScopeEventMap & {
+    "message": MessageEvent,
+    [key: string]: Event,
 }
 
-declare class DedicatedWorkerGlobalScope extends WorkerGlobalScope {
-    onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+declare class DedicatedWorkerGlobalScope mixins WorkerGlobalScope {
+    constructor(): this;
+    onmessage: ((/*this: DedicatedWorkerGlobalScope, */ev: MessageEvent) => any) | null;
     close(): void;
     postMessage(message: any, transfer?: Transferable[]): void;
-    addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<DedicatedWorkerGlobalScopeEventMap>>(type: K, listener: (/*this: DedicatedWorkerGlobalScope, */ev: $ElementType<DedicatedWorkerGlobalScopeEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<DedicatedWorkerGlobalScopeEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<DedicatedWorkerGlobalScopeEventMap>>(type: K, listener: (/*this: DedicatedWorkerGlobalScope, */ev: $ElementType<DedicatedWorkerGlobalScopeEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<DedicatedWorkerGlobalScopeEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var DedicatedWorkerGlobalScope: {
-    prototype: DedicatedWorkerGlobalScope;
-    new(): DedicatedWorkerGlobalScope;
-};
-
-declare class DhImportKeyParams extends Algorithm {
+declare type DhImportKeyParams = interface extends Algorithm {
     generator: Uint8Array;
     prime: Uint8Array;
 }
 
-declare class DhKeyAlgorithm extends KeyAlgorithm {
+declare type DhKeyAlgorithm = interface extends KeyAlgorithm {
     generator: Uint8Array;
     prime: Uint8Array;
 }
 
-declare class DhKeyDeriveParams extends Algorithm {
+declare type DhKeyDeriveParams = interface extends Algorithm {
     public: CryptoKey;
 }
 
-declare class DhKeyGenParams extends Algorithm {
+declare type DhKeyGenParams = interface extends Algorithm {
     generator: Uint8Array;
     prime: Uint8Array;
 }
 
-declare class EXT_blend_minmax {
+declare type EXT_blend_minmax = interface {
     +MAX_EXT: GLenum;
     +MIN_EXT: GLenum;
 }
 
-declare class EXT_frag_depth {
+declare type EXT_frag_depth = interface {
 }
 
-declare class EXT_sRGB {
+declare type EXT_sRGB = interface {
     +FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING_EXT: GLenum;
     +SRGB8_ALPHA8_EXT: GLenum;
     +SRGB_ALPHA_EXT: GLenum;
     +SRGB_EXT: GLenum;
 }
 
-declare class EXT_shader_texture_lod {
+declare type EXT_shader_texture_lod = interface {
 }
 
-declare class EXT_texture_filter_anisotropic {
+declare type EXT_texture_filter_anisotropic = interface {
     +MAX_TEXTURE_MAX_ANISOTROPY_EXT: GLenum;
     +TEXTURE_MAX_ANISOTROPY_EXT: GLenum;
 }
 
-declare class ErrorEvent extends Event {
+declare class ErrorEvent mixins Event {
+    constructor(type: string, eventInitDict?: ErrorEventInit): this;
     +colno: number;
     +error: any;
     +filename: string;
@@ -1104,12 +1006,12 @@ declare class ErrorEvent extends Event {
     +message: string;
 }
 
-declare var ErrorEvent: {
-    prototype: ErrorEvent;
-    new(type: string, eventInitDict?: ErrorEventInit): ErrorEvent;
-};
-
 declare class Event {
+    constructor(type: string, eventInitDict?: EventInit): this;
+    +AT_TARGET: number;
+    +BUBBLING_PHASE: number;
+    +CAPTURING_PHASE: number;
+    +NONE: number;
     /**
      * Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order, and false otherwise.
      */
@@ -1169,42 +1071,52 @@ declare class Event {
     +NONE: number;
 }
 
-declare var Event: {
-    prototype: Event;
-    new(type: string, eventInitDict?: EventInit): Event;
-    +AT_TARGET: number;
-    +BUBBLING_PHASE: number;
-    +CAPTURING_PHASE: number;
-    +NONE: number;
-};
-
-declare class EventListenerObject {
+declare type EventListenerObject = interface {
     handleEvent(evt: Event): void;
 }
 
-declare class EventSource extends EventTarget {
+type EventSourceEventMap = & {
+    "error": Event,
+    "message": MessageEvent,
+    "open": Event,
+    [key: string]: Event,
+}
+
+declare class EventSource mixins EventTarget {
+    constructor(url: string, eventSourceInitDict?: EventSourceInit): this;
     +CLOSED: number;
     +CONNECTING: number;
     +OPEN: number;
-    onerror: (evt: MessageEvent) => any;
-    onmessage: (evt: MessageEvent) => any;
-    onopen: (evt: MessageEvent) => any;
+    onerror: ((/*this: EventSource, */ev: Event) => any) | null;
+    onmessage: ((/*this: EventSource, */ev: MessageEvent) => any) | null;
+    onopen: ((/*this: EventSource, */ev: Event) => any) | null;
+    /**
+     * Returns the state of this EventSource object's connection. It can have the
+     * values described below.
+     */
     +readyState: number;
+    /**
+     * Returns the URL providing the event stream.
+     */
     +url: string;
+    /**
+     * Returns true if the credentials mode
+     * for connection requests to the URL providing the
+     * event stream is set to "include", and false otherwise.
+     */
     +withCredentials: boolean;
     close(): void;
-}
-
-declare var EventSource: {
-    prototype: EventSource;
-    new(url: string, eventSourceInitDict?: EventSourceInit): EventSource;
-};
-
-declare class EventSourceInit {
-    +withCredentials: boolean;
+    +CLOSED: number;
+    +CONNECTING: number;
+    +OPEN: number;
+    addEventListener<K: $Keys<EventSourceEventMap>>(type: K, listener: (/*this: EventSource, */ev: $ElementType<EventSourceEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<EventSourceEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<EventSourceEventMap>>(type: K, listener: (/*this: EventSource, */ev: $ElementType<EventSourceEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<EventSourceEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
 declare class EventTarget {
+    constructor(): this;
     /**
      * Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
      * The options argument sets listener-specific options. For compatibility this can be a
@@ -1227,21 +1139,13 @@ declare class EventTarget {
     removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
 }
 
-declare var EventTarget: {
-    prototype: EventTarget;
-    new(): EventTarget;
-};
-
-declare class ExtendableEvent extends Event {
+declare class ExtendableEvent mixins Event {
+    constructor(type: string, eventInitDict?: ExtendableEventInit): this;
     waitUntil(f: Promise<any>): void;
 }
 
-declare var ExtendableEvent: {
-    prototype: ExtendableEvent;
-    new(type: string, eventInitDict?: ExtendableEventInit): ExtendableEvent;
-};
-
-declare class ExtendableMessageEvent extends ExtendableEvent {
+declare class ExtendableMessageEvent mixins ExtendableEvent {
+    constructor(type: string, eventInitDict?: ExtendableMessageEventInit): this;
     +data: any;
     +lastEventId: string;
     +origin: string;
@@ -1249,63 +1153,51 @@ declare class ExtendableMessageEvent extends ExtendableEvent {
     +source: Client | ServiceWorker | MessagePort | null;
 }
 
-declare var ExtendableMessageEvent: {
-    prototype: ExtendableMessageEvent;
-    new(type: string, eventInitDict?: ExtendableMessageEventInit): ExtendableMessageEvent;
-};
-
-declare class FetchEvent extends ExtendableEvent {
+declare class FetchEvent mixins ExtendableEvent {
+    constructor(type: string, eventInitDict: FetchEventInit): this;
     +clientId: string;
     +preloadResponse: Promise<any>;
+    +replacesClientId: string;
     +request: Request;
     +resultingClientId: string;
-    +targetClientId: string;
     respondWith(r: Promise<Response>): void;
 }
 
-declare var FetchEvent: {
-    prototype: FetchEvent;
-    new(type: string, eventInitDict: FetchEventInit): FetchEvent;
-};
-
-declare class File extends Blob {
+declare class File mixins Blob {
+    constructor(fileBits: BlobPart[], fileName: string, options?: FilePropertyBag): this;
     +lastModified: number;
     +name: string;
 }
 
-declare var File: {
-    prototype: File;
-    new(fileBits: BlobPart[], fileName: string, options?: FilePropertyBag): File;
-};
-
 declare class FileList {
+    constructor(): this;
     +length: number;
     item(index: number): File | null;
     [index: number]: File;
 }
 
-declare var FileList: {
-    prototype: FileList;
-    new(): FileList;
-};
-
-interface FileReaderEventMap {
-    "abort": ProgressEvent;
-    "error": ProgressEvent;
-    "load": ProgressEvent;
-    "loadend": ProgressEvent;
-    "loadstart": ProgressEvent;
-    "progress": ProgressEvent;
+type FileReaderEventMap = & {
+    "abort": ProgressEvent,
+    "error": ProgressEvent,
+    "load": ProgressEvent,
+    "loadend": ProgressEvent,
+    "loadstart": ProgressEvent,
+    "progress": ProgressEvent,
+    [key: string]: Event,
 }
 
-declare class FileReader extends EventTarget {
+declare class FileReader mixins EventTarget {
+    constructor(): this;
+    +DONE: number;
+    +EMPTY: number;
+    +LOADING: number;
     +error: DOMException | null;
-    onabort: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onerror: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onload: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onloadend: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onloadstart: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onprogress: ((this: FileReader, ev: ProgressEvent) => any) | null;
+    onabort: ((/*this: FileReader, */ev: ProgressEvent) => any) | null;
+    onerror: ((/*this: FileReader, */ev: ProgressEvent) => any) | null;
+    onload: ((/*this: FileReader, */ev: ProgressEvent) => any) | null;
+    onloadend: ((/*this: FileReader, */ev: ProgressEvent) => any) | null;
+    onloadstart: ((/*this: FileReader, */ev: ProgressEvent) => any) | null;
+    onprogress: ((/*this: FileReader, */ev: ProgressEvent) => any) | null;
     +readyState: number;
     +result: string | ArrayBuffer | null;
     abort(): void;
@@ -1316,33 +1208,22 @@ declare class FileReader extends EventTarget {
     +DONE: number;
     +EMPTY: number;
     +LOADING: number;
-    addEventListener<K extends keyof FileReaderEventMap>(type: K, listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof FileReaderEventMap>(type: K, listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<FileReaderEventMap>>(type: K, listener: (/*this: FileReader, */ev: $ElementType<FileReaderEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<FileReaderEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<FileReaderEventMap>>(type: K, listener: (/*this: FileReader, */ev: $ElementType<FileReaderEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<FileReaderEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var FileReader: {
-    prototype: FileReader;
-    new(): FileReader;
-    +DONE: number;
-    +EMPTY: number;
-    +LOADING: number;
-};
-
 declare class FileReaderSync {
+    constructor(): this;
     readAsArrayBuffer(blob: Blob): ArrayBuffer;
     readAsBinaryString(blob: Blob): string;
     readAsDataURL(blob: Blob): string;
     readAsText(blob: Blob, encoding?: string): string;
 }
 
-declare var FileReaderSync: {
-    prototype: FileReaderSync;
-    new(): FileReaderSync;
-};
-
 declare class FormData {
+    constructor(): this;
     append(name: string, value: string | Blob, fileName?: string): void;
     delete(name: string): void;
     get(name: string): FormDataEntryValue | null;
@@ -1352,16 +1233,12 @@ declare class FormData {
     forEach(callbackfn: (value: FormDataEntryValue, key: string, parent: FormData) => void, thisArg?: any): void;
 }
 
-declare var FormData: {
-    prototype: FormData;
-    new(): FormData;
-};
-
-declare class GlobalFetch {
+declare type GlobalFetch = interface {
     fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
 }
 
 declare class Headers {
+    constructor(init?: HeadersInit): this;
     append(name: string, value: string): void;
     delete(name: string): void;
     get(name: string): string | null;
@@ -1370,21 +1247,17 @@ declare class Headers {
     forEach(callbackfn: (value: string, key: string, parent: Headers) => void, thisArg?: any): void;
 }
 
-declare var Headers: {
-    prototype: Headers;
-    new(init?: HeadersInit): Headers;
-};
-
-declare class HkdfCtrParams extends Algorithm {
+declare type HkdfCtrParams = interface extends Algorithm {
     context: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer;
     hash: string | Algorithm;
     label: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer;
 }
 
-declare class IDBArrayKey extends Array<IDBValidKey> {
+declare type IDBArrayKey = interface extends Array<IDBValidKey> {
 }
 
 declare class IDBCursor {
+    constructor(): this;
     /**
      * Returns the direction ("next", "nextunique", "prev" or "prevunique")
      * of the cursor.
@@ -1394,12 +1267,12 @@ declare class IDBCursor {
      * Returns the key of the cursor.
      * Throws a "InvalidStateError" DOMException if the cursor is advancing or is finished.
      */
-    +key: IDBValidKey | IDBKeyRange;
+    +key: IDBValidKey;
     /**
      * Returns the effective key of the cursor.
      * Throws a "InvalidStateError" DOMException if the cursor is advancing or is finished.
      */
-    +primaryKey: IDBValidKey | IDBKeyRange;
+    +primaryKey: IDBValidKey;
     /**
      * Returns the IDBObjectStore or IDBIndex the cursor was opened from.
      */
@@ -1413,17 +1286,17 @@ declare class IDBCursor {
      * Advances the cursor to the next record in range matching or
      * after key.
      */
-    continue(key?: IDBValidKey | IDBKeyRange): void;
+    continue(key?: IDBValidKey): void;
     /**
      * Advances the cursor to the next record in range matching
      * or after key and primaryKey. Throws an "InvalidAccessError" DOMException if the source is not an index.
      */
-    continuePrimaryKey(key: IDBValidKey | IDBKeyRange, primaryKey: IDBValidKey | IDBKeyRange): void;
+    continuePrimaryKey(key: IDBValidKey, primaryKey: IDBValidKey): void;
     /**
      * Delete the record pointed at by the cursor with a new value.
      * If successful, request's result will be undefined.
      */
-    delete(): IDBRequest<undefined>;
+    delete(): IDBRequest<void>;
     /**
      * Updated the record pointed at by the cursor with a new value.
      * Throws a "DataError" DOMException if the effective object store uses in-line keys and the key would have changed.
@@ -1432,31 +1305,24 @@ declare class IDBCursor {
     update(value: any): IDBRequest<IDBValidKey>;
 }
 
-declare var IDBCursor: {
-    prototype: IDBCursor;
-    new(): IDBCursor;
-};
-
-declare class IDBCursorWithValue extends IDBCursor {
+declare class IDBCursorWithValue mixins IDBCursor {
+    constructor(): this;
     /**
      * Returns the cursor's current value.
      */
     +value: any;
 }
 
-declare var IDBCursorWithValue: {
-    prototype: IDBCursorWithValue;
-    new(): IDBCursorWithValue;
-};
-
-interface IDBDatabaseEventMap {
-    "abort": Event;
-    "close": Event;
-    "error": Event;
-    "versionchange": IDBVersionChangeEvent;
+type IDBDatabaseEventMap = & {
+    "abort": Event,
+    "close": Event,
+    "error": Event,
+    "versionchange": IDBVersionChangeEvent,
+    [key: string]: Event,
 }
 
-declare class IDBDatabase extends EventTarget {
+declare class IDBDatabase mixins EventTarget {
+    constructor(): this;
     /**
      * Returns the name of the database.
      */
@@ -1465,10 +1331,10 @@ declare class IDBDatabase extends EventTarget {
      * Returns a list of the names of object stores in the database.
      */
     +objectStoreNames: DOMStringList;
-    onabort: ((this: IDBDatabase, ev: Event) => any) | null;
-    onclose: ((this: IDBDatabase, ev: Event) => any) | null;
-    onerror: ((this: IDBDatabase, ev: Event) => any) | null;
-    onversionchange: ((this: IDBDatabase, ev: IDBVersionChangeEvent) => any) | null;
+    onabort: ((/*this: IDBDatabase, */ev: Event) => any) | null;
+    onclose: ((/*this: IDBDatabase, */ev: Event) => any) | null;
+    onerror: ((/*this: IDBDatabase, */ev: Event) => any) | null;
+    onversionchange: ((/*this: IDBDatabase, */ev: IDBVersionChangeEvent) => any) | null;
     /**
      * Returns the version of the database.
      */
@@ -1492,18 +1358,14 @@ declare class IDBDatabase extends EventTarget {
      * and scope which can be a single object store name or an array of names.
      */
     transaction(storeNames: string | string[], mode?: IDBTransactionMode): IDBTransaction;
-    addEventListener<K extends keyof IDBDatabaseEventMap>(type: K, listener: (this: IDBDatabase, ev: IDBDatabaseEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof IDBDatabaseEventMap>(type: K, listener: (this: IDBDatabase, ev: IDBDatabaseEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<IDBDatabaseEventMap>>(type: K, listener: (/*this: IDBDatabase, */ev: $ElementType<IDBDatabaseEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<IDBDatabaseEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<IDBDatabaseEventMap>>(type: K, listener: (/*this: IDBDatabase, */ev: $ElementType<IDBDatabaseEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<IDBDatabaseEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBDatabase: {
-    prototype: IDBDatabase;
-    new(): IDBDatabase;
-};
-
 declare class IDBFactory {
+    constructor(): this;
     /**
      * Compares two values as keys. Returns -1 if key1 precedes key2, 1 if key2 precedes key1, and 0 if
      * the keys are equal.
@@ -1527,12 +1389,8 @@ declare class IDBFactory {
     open(name: string, version?: number): IDBOpenDBRequest;
 }
 
-declare var IDBFactory: {
-    prototype: IDBFactory;
-    new(): IDBFactory;
-};
-
 declare class IDBIndex {
+    constructor(): this;
     +keyPath: string | string[];
     +multiEntry: boolean;
     /**
@@ -1557,7 +1415,7 @@ declare class IDBIndex {
      * given key or key range in query.
      * If successful, request's result will be the value, or undefined if there was no matching record.
      */
-    get(key: IDBValidKey | IDBKeyRange): IDBRequest<any | undefined>;
+    get(key: IDBValidKey | IDBKeyRange): IDBRequest<any | void>;
     /**
      * Retrieves the values of the records matching the given key or key range in query (up to count if given).
      * If successful, request's result will be an Array of the values.
@@ -1573,7 +1431,7 @@ declare class IDBIndex {
      * given key or key range in query.
      * If successful, request's result will be the key, or undefined if there was no matching record.
      */
-    getKey(key: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | undefined>;
+    getKey(key: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | void>;
     /**
      * Opens a cursor over the records matching query,
      * ordered by direction. If query is null, all records in index are matched.
@@ -1587,12 +1445,28 @@ declare class IDBIndex {
     openKeyCursor(range?: IDBValidKey | IDBKeyRange, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>;
 }
 
-declare var IDBIndex: {
-    prototype: IDBIndex;
-    new(): IDBIndex;
-};
-
 declare class IDBKeyRange {
+    constructor(): this;
+    /**
+     * Returns a new IDBKeyRange spanning from lower to upper.
+     * If lowerOpen is true, lower is not included in the range.
+     * If upperOpen is true, upper is not included in the range.
+     */
+    bound(lower: any, upper: any, lowerOpen?: boolean, upperOpen?: boolean): IDBKeyRange;
+    /**
+     * Returns a new IDBKeyRange starting at key with no
+     * upper bound. If open is true, key is not included in the
+     * range.
+     */
+    lowerBound(lower: any, open?: boolean): IDBKeyRange;
+    /**
+     * Returns a new IDBKeyRange spanning only key.
+     */
+    only(value: any): IDBKeyRange;
+    /**
+     * Returns a new IDBKeyRange with no lower bound and ending at key. If open is true, key is not included in the range.
+     */
+    upperBound(upper: any, open?: boolean): IDBKeyRange;
     /**
      * Returns lower bound, or undefined if none.
      */
@@ -1615,32 +1489,8 @@ declare class IDBKeyRange {
     includes(key: any): boolean;
 }
 
-declare var IDBKeyRange: {
-    prototype: IDBKeyRange;
-    new(): IDBKeyRange;
-    /**
-     * Returns a new IDBKeyRange spanning from lower to upper.
-     * If lowerOpen is true, lower is not included in the range.
-     * If upperOpen is true, upper is not included in the range.
-     */
-    bound(lower: any, upper: any, lowerOpen?: boolean, upperOpen?: boolean): IDBKeyRange;
-    /**
-     * Returns a new IDBKeyRange starting at key with no
-     * upper bound. If open is true, key is not included in the
-     * range.
-     */
-    lowerBound(lower: any, open?: boolean): IDBKeyRange;
-    /**
-     * Returns a new IDBKeyRange spanning only key.
-     */
-    only(value: any): IDBKeyRange;
-    /**
-     * Returns a new IDBKeyRange with no lower bound and ending at key. If open is true, key is not included in the range.
-     */
-    upperBound(upper: any, open?: boolean): IDBKeyRange;
-};
-
 declare class IDBObjectStore {
+    constructor(): this;
     /**
      * Returns true if the store has a key generator, and false otherwise.
      */
@@ -1663,13 +1513,13 @@ declare class IDBObjectStore {
      * Returns the associated transaction.
      */
     +transaction: IDBTransaction;
-    add(value: any, key?: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey>;
+    add(value: any, key?: IDBValidKey): IDBRequest<IDBValidKey>;
     /**
      * Deletes all records in store.
      * If successful, request's result will
      * be undefined.
      */
-    clear(): IDBRequest<undefined>;
+    clear(): IDBRequest<void>;
     /**
      * Retrieves the number of records matching the
      * given key or key range in query.
@@ -1690,7 +1540,7 @@ declare class IDBObjectStore {
      * If successful, request's result will
      * be undefined.
      */
-    delete(key: IDBValidKey | IDBKeyRange): IDBRequest<undefined>;
+    delete(key: IDBValidKey | IDBKeyRange): IDBRequest<void>;
     /**
      * Deletes the index in store with the given name.
      * Throws an "InvalidStateError" DOMException if not called within an upgrade
@@ -1702,7 +1552,7 @@ declare class IDBObjectStore {
      * given key or key range in query.
      * If successful, request's result will be the value, or undefined if there was no matching record.
      */
-    get(query: IDBValidKey | IDBKeyRange): IDBRequest<any | undefined>;
+    get(query: IDBValidKey | IDBKeyRange): IDBRequest<any | void>;
     /**
      * Retrieves the values of the records matching the
      * given key or key range in query (up to count if given).
@@ -1722,7 +1572,7 @@ declare class IDBObjectStore {
      * given key or key range in query.
      * If successful, request's result will be the key, or undefined if there was no matching record.
      */
-    getKey(query: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | undefined>;
+    getKey(query: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | void>;
     index(name: string): IDBIndex;
     /**
      * Opens a cursor over the records matching query,
@@ -1736,46 +1586,40 @@ declare class IDBObjectStore {
      * null if there were no matching records.
      */
     openKeyCursor(query?: IDBValidKey | IDBKeyRange, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>;
-    put(value: any, key?: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey>;
+    put(value: any, key?: IDBValidKey): IDBRequest<IDBValidKey>;
 }
 
-declare var IDBObjectStore: {
-    prototype: IDBObjectStore;
-    new(): IDBObjectStore;
-};
-
-interface IDBOpenDBRequestEventMap extends IDBRequestEventMap {
-    "blocked": Event;
-    "upgradeneeded": IDBVersionChangeEvent;
+type IDBOpenDBRequestEventMap = IDBRequestEventMap & {
+    "blocked": Event,
+    "upgradeneeded": IDBVersionChangeEvent,
+    [key: string]: Event,
 }
 
-declare class IDBOpenDBRequest extends IDBRequest<IDBDatabase> {
-    onblocked: ((this: IDBOpenDBRequest, ev: Event) => any) | null;
-    onupgradeneeded: ((this: IDBOpenDBRequest, ev: IDBVersionChangeEvent) => any) | null;
-    addEventListener<K extends keyof IDBOpenDBRequestEventMap>(type: K, listener: (this: IDBOpenDBRequest, ev: IDBOpenDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof IDBOpenDBRequestEventMap>(type: K, listener: (this: IDBOpenDBRequest, ev: IDBOpenDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+declare class IDBOpenDBRequest mixins IDBRequest<IDBDatabase> {
+    constructor(): this;
+    onblocked: ((/*this: IDBOpenDBRequest, */ev: Event) => any) | null;
+    onupgradeneeded: ((/*this: IDBOpenDBRequest, */ev: IDBVersionChangeEvent) => any) | null;
+    addEventListener<K: $Keys<IDBOpenDBRequestEventMap>>(type: K, listener: (/*this: IDBOpenDBRequest, */ev: $ElementType<IDBOpenDBRequestEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<IDBOpenDBRequestEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<IDBOpenDBRequestEventMap>>(type: K, listener: (/*this: IDBOpenDBRequest, */ev: $ElementType<IDBOpenDBRequestEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<IDBOpenDBRequestEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBOpenDBRequest: {
-    prototype: IDBOpenDBRequest;
-    new(): IDBOpenDBRequest;
-};
-
-interface IDBRequestEventMap {
-    "error": Event;
-    "success": Event;
+type IDBRequestEventMap = & {
+    "error": Event,
+    "success": Event,
+    [key: string]: Event,
 }
 
-declare class IDBRequest<T = any> extends EventTarget {
+declare class IDBRequest<T = any> mixins EventTarget {
+    constructor(): this;
     /**
      * When a request is completed, returns the error (a DOMException), or null if the request succeeded. Throws
      * a "InvalidStateError" DOMException if the request is still pending.
      */
     +error: DOMException | null;
-    onerror: ((this: IDBRequest<T>, ev: Event) => any) | null;
-    onsuccess: ((this: IDBRequest<T>, ev: Event) => any) | null;
+    onerror: ((/*this: IDBRequest<T>, */ev: Event) => any) | null;
+    onsuccess: ((/*this: IDBRequest<T>, */ev: Event) => any) | null;
     /**
      * Returns "pending" until a request is complete,
      * then returns "done".
@@ -1797,24 +1641,21 @@ declare class IDBRequest<T = any> extends EventTarget {
      * If this as an open request, then it returns an upgrade transaction while it is running, or null otherwise.
      */
     +transaction: IDBTransaction | null;
-    addEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<IDBRequestEventMap>>(type: K, listener: (/*this: IDBRequest<T>, */ev: $ElementType<IDBRequestEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<IDBRequestEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<IDBRequestEventMap>>(type: K, listener: (/*this: IDBRequest<T>, */ev: $ElementType<IDBRequestEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<IDBRequestEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBRequest: {
-    prototype: IDBRequest;
-    new(): IDBRequest;
-};
-
-interface IDBTransactionEventMap {
-    "abort": Event;
-    "complete": Event;
-    "error": Event;
+type IDBTransactionEventMap = & {
+    "abort": Event,
+    "complete": Event,
+    "error": Event,
+    [key: string]: Event,
 }
 
-declare class IDBTransaction extends EventTarget {
+declare class IDBTransaction mixins EventTarget {
+    constructor(): this;
     /**
      * Returns the transaction's connection.
      */
@@ -1835,9 +1676,9 @@ declare class IDBTransaction extends EventTarget {
      * transaction's scope. For an upgrade transaction this is all object stores in the database.
      */
     +objectStoreNames: DOMStringList;
-    onabort: ((this: IDBTransaction, ev: Event) => any) | null;
-    oncomplete: ((this: IDBTransaction, ev: Event) => any) | null;
-    onerror: ((this: IDBTransaction, ev: Event) => any) | null;
+    onabort: ((/*this: IDBTransaction, */ev: Event) => any) | null;
+    oncomplete: ((/*this: IDBTransaction, */ev: Event) => any) | null;
+    onerror: ((/*this: IDBTransaction, */ev: Event) => any) | null;
     /**
      * Aborts the transaction. All pending requests will fail with
      * a "AbortError" DOMException and all changes made to the database will be
@@ -1848,28 +1689,20 @@ declare class IDBTransaction extends EventTarget {
      * Returns an IDBObjectStore in the transaction's scope.
      */
     objectStore(name: string): IDBObjectStore;
-    addEventListener<K extends keyof IDBTransactionEventMap>(type: K, listener: (this: IDBTransaction, ev: IDBTransactionEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof IDBTransactionEventMap>(type: K, listener: (this: IDBTransaction, ev: IDBTransactionEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<IDBTransactionEventMap>>(type: K, listener: (/*this: IDBTransaction, */ev: $ElementType<IDBTransactionEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<IDBTransactionEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<IDBTransactionEventMap>>(type: K, listener: (/*this: IDBTransaction, */ev: $ElementType<IDBTransactionEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<IDBTransactionEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBTransaction: {
-    prototype: IDBTransaction;
-    new(): IDBTransaction;
-};
-
-declare class IDBVersionChangeEvent extends Event {
+declare class IDBVersionChangeEvent mixins Event {
+    constructor(type: string, eventInitDict?: IDBVersionChangeEventInit): this;
     +newVersion: number | null;
     +oldVersion: number;
 }
 
-declare var IDBVersionChangeEvent: {
-    prototype: IDBVersionChangeEvent;
-    new(type: string, eventInitDict?: IDBVersionChangeEventInit): IDBVersionChangeEvent;
-};
-
 declare class ImageBitmap {
+    constructor(): this;
     /**
      * Returns the intrinsic height of the image, in CSS
      * pixels.
@@ -1886,12 +1719,7 @@ declare class ImageBitmap {
     close(): void;
 }
 
-declare var ImageBitmap: {
-    prototype: ImageBitmap;
-    new(): ImageBitmap;
-};
-
-declare class ImageBitmapOptions {
+declare type ImageBitmapOptions = interface {
     colorSpaceConversion?: "none" | "default";
     imageOrientation?: "none" | "flipY";
     premultiplyAlpha?: "none" | "premultiply" | "default";
@@ -1901,6 +1729,8 @@ declare class ImageBitmapOptions {
 }
 
 declare class ImageData {
+    constructor(width: number, height: number): ImageData;
+    constructor(array: Uint8ClampedArray, width: number, height: number): ImageData;
     /**
      * Returns the one-dimensional array containing the data in RGBA order, as integers in the
      * range 0 to 255.
@@ -1914,23 +1744,14 @@ declare class ImageData {
     +width: number;
 }
 
-declare var ImageData: {
-    prototype: ImageData;
-    new(width: number, height: number): ImageData;
-    new(array: Uint8ClampedArray, width: number, height: number): ImageData;
-};
-
 declare class MessageChannel {
+    constructor(): this;
     +port1: MessagePort;
     +port2: MessagePort;
 }
 
-declare var MessageChannel: {
-    prototype: MessageChannel;
-    new(): MessageChannel;
-};
-
-declare class MessageEvent extends Event {
+declare class MessageEvent mixins Event {
+    constructor(type: string, eventInitDict?: MessageEventInit): this;
     /**
      * Returns the data of the message.
      */
@@ -1958,19 +1779,16 @@ declare class MessageEvent extends Event {
     +source: MessageEventSource | null;
 }
 
-declare var MessageEvent: {
-    prototype: MessageEvent;
-    new(type: string, eventInitDict?: MessageEventInit): MessageEvent;
-};
-
-interface MessagePortEventMap {
-    "message": MessageEvent;
-    "messageerror": MessageEvent;
+type MessagePortEventMap = & {
+    "message": MessageEvent,
+    "messageerror": MessageEvent,
+    [key: string]: Event,
 }
 
-declare class MessagePort extends EventTarget {
-    onmessage: ((this: MessagePort, ev: MessageEvent) => any) | null;
-    onmessageerror: ((this: MessagePort, ev: MessageEvent) => any) | null;
+declare class MessagePort mixins EventTarget {
+    constructor(): this;
+    onmessage: ((/*this: MessagePort, */ev: MessageEvent) => any) | null;
+    onmessageerror: ((/*this: MessagePort, */ev: MessageEvent) => any) | null;
     /**
      * Disconnects the port, so that it is no longer active.
      */
@@ -1987,38 +1805,29 @@ declare class MessagePort extends EventTarget {
      * Begins dispatching messages received on the port.
      */
     start(): void;
-    addEventListener<K extends keyof MessagePortEventMap>(type: K, listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof MessagePortEventMap>(type: K, listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<MessagePortEventMap>>(type: K, listener: (/*this: MessagePort, */ev: $ElementType<MessagePortEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<MessagePortEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<MessagePortEventMap>>(type: K, listener: (/*this: MessagePort, */ev: $ElementType<MessagePortEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<MessagePortEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var MessagePort: {
-    prototype: MessagePort;
-    new(): MessagePort;
-};
-
 declare class NavigationPreloadManager {
+    constructor(): this;
     disable(): Promise<void>;
     enable(): Promise<void>;
     getState(): Promise<NavigationPreloadState>;
     setHeaderValue(value: string): Promise<void>;
 }
 
-declare var NavigationPreloadManager: {
-    prototype: NavigationPreloadManager;
-    new(): NavigationPreloadManager;
-};
-
-declare class NavigatorBeacon {
+declare type NavigatorBeacon = interface {
     sendBeacon(url: string, data?: Blob | Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer | FormData | string | null): boolean;
 }
 
-declare class NavigatorConcurrentHardware {
+declare type NavigatorConcurrentHardware = interface {
     +hardwareConcurrency: number;
 }
 
-declare class NavigatorID {
+declare type NavigatorID = interface {
     +appCodeName: string;
     +appName: string;
     +appVersion: string;
@@ -2030,22 +1839,26 @@ declare class NavigatorID {
     +vendorSub: string;
 }
 
-declare class NavigatorOnLine {
+declare type NavigatorOnLine = interface {
     +onLine: boolean;
 }
 
-declare class NavigatorStorage {
+declare type NavigatorStorage = interface {
     +storage: StorageManager;
 }
 
-interface NotificationEventMap {
-    "click": Event;
-    "close": Event;
-    "error": Event;
-    "show": Event;
+type NotificationEventMap = & {
+    "click": Event,
+    "close": Event,
+    "error": Event,
+    "show": Event,
+    [key: string]: Event,
 }
 
-declare class Notification extends EventTarget {
+declare class Notification mixins EventTarget {
+    constructor(title: string, options?: NotificationOptions): this;
+    +maxActions: number;
+    +permission: NotificationPermission;
     +actions: ReadonlyArray<NotificationAction>;
     +badge: string;
     +body: string;
@@ -2054,10 +1867,10 @@ declare class Notification extends EventTarget {
     +icon: string;
     +image: string;
     +lang: string;
-    onclick: ((this: Notification, ev: Event) => any) | null;
-    onclose: ((this: Notification, ev: Event) => any) | null;
-    onerror: ((this: Notification, ev: Event) => any) | null;
-    onshow: ((this: Notification, ev: Event) => any) | null;
+    onclick: ((/*this: Notification, */ev: Event) => any) | null;
+    onclose: ((/*this: Notification, */ev: Event) => any) | null;
+    onerror: ((/*this: Notification, */ev: Event) => any) | null;
+    onshow: ((/*this: Notification, */ev: Event) => any) | null;
     +renotify: boolean;
     +requireInteraction: boolean;
     +silent: boolean;
@@ -2066,50 +1879,39 @@ declare class Notification extends EventTarget {
     +title: string;
     +vibrate: ReadonlyArray<number>;
     close(): void;
-    addEventListener<K extends keyof NotificationEventMap>(type: K, listener: (this: Notification, ev: NotificationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof NotificationEventMap>(type: K, listener: (this: Notification, ev: NotificationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<NotificationEventMap>>(type: K, listener: (/*this: Notification, */ev: $ElementType<NotificationEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<NotificationEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<NotificationEventMap>>(type: K, listener: (/*this: Notification, */ev: $ElementType<NotificationEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<NotificationEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var Notification: {
-    prototype: Notification;
-    new(title: string, options?: NotificationOptions): Notification;
-    +maxActions: number;
-    +permission: NotificationPermission;
-};
-
-declare class NotificationEvent extends ExtendableEvent {
+declare class NotificationEvent mixins ExtendableEvent {
+    constructor(type: string, eventInitDict: NotificationEventInit): this;
     +action: string;
     +notification: Notification;
 }
 
-declare var NotificationEvent: {
-    prototype: NotificationEvent;
-    new(type: string, eventInitDict: NotificationEventInit): NotificationEvent;
-};
-
-declare class OES_element_index_uint {
+declare type OES_element_index_uint = interface {
 }
 
-declare class OES_standard_derivatives {
+declare type OES_standard_derivatives = interface {
     +FRAGMENT_SHADER_DERIVATIVE_HINT_OES: GLenum;
 }
 
-declare class OES_texture_float {
+declare type OES_texture_float = interface {
 }
 
-declare class OES_texture_float_linear {
+declare type OES_texture_float_linear = interface {
 }
 
-declare class OES_texture_half_float {
+declare type OES_texture_half_float = interface {
     +HALF_FLOAT_OES: GLenum;
 }
 
-declare class OES_texture_half_float_linear {
+declare type OES_texture_half_float_linear = interface {
 }
 
-declare class OES_vertex_array_object {
+declare type OES_vertex_array_object = interface {
     bindVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
     createVertexArrayOES(): WebGLVertexArrayObjectOES | null;
     deleteVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
@@ -2117,21 +1919,28 @@ declare class OES_vertex_array_object {
     +VERTEX_ARRAY_BINDING_OES: GLenum;
 }
 
-declare class Path2D extends CanvasPath {
+declare class Path2D implements CanvasPath {
+    constructor(path?: Path2D | string): this;
+    arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+    arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+    bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+    closePath(): void;
+    ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+    lineTo(x: number, y: number): void;
+    moveTo(x: number, y: number): void;
+    quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
+    rect(x: number, y: number, w: number, h: number): void;
     addPath(path: Path2D, transform?: DOMMatrix2DInit): void;
 }
 
-declare var Path2D: {
-    prototype: Path2D;
-    new(path?: Path2D | string): Path2D;
-};
-
-interface PerformanceEventMap {
-    "resourcetimingbufferfull": Event;
+type PerformanceEventMap = & {
+    "resourcetimingbufferfull": Event,
+    [key: string]: Event,
 }
 
-declare class Performance extends EventTarget {
-    onresourcetimingbufferfull: ((this: Performance, ev: Event) => any) | null;
+declare class Performance mixins EventTarget {
+    constructor(): this;
+    onresourcetimingbufferfull: ((/*this: Performance, */ev: Event) => any) | null;
     +timeOrigin: number;
     clearMarks(markName?: string): void;
     clearMeasures(measureName?: string): void;
@@ -2144,18 +1953,14 @@ declare class Performance extends EventTarget {
     now(): number;
     setResourceTimingBufferSize(maxSize: number): void;
     toJSON(): any;
-    addEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<PerformanceEventMap>>(type: K, listener: (/*this: Performance, */ev: $ElementType<PerformanceEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<PerformanceEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<PerformanceEventMap>>(type: K, listener: (/*this: Performance, */ev: $ElementType<PerformanceEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<PerformanceEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var Performance: {
-    prototype: Performance;
-    new(): Performance;
-};
-
 declare class PerformanceEntry {
+    constructor(): this;
     +duration: number;
     +entryType: string;
     +name: string;
@@ -2163,50 +1968,31 @@ declare class PerformanceEntry {
     toJSON(): any;
 }
 
-declare var PerformanceEntry: {
-    prototype: PerformanceEntry;
-    new(): PerformanceEntry;
-};
-
-declare class PerformanceMark extends PerformanceEntry {
+declare class PerformanceMark mixins PerformanceEntry {
+    constructor(): this;
 }
 
-declare var PerformanceMark: {
-    prototype: PerformanceMark;
-    new(): PerformanceMark;
-};
-
-declare class PerformanceMeasure extends PerformanceEntry {
+declare class PerformanceMeasure mixins PerformanceEntry {
+    constructor(): this;
 }
-
-declare var PerformanceMeasure: {
-    prototype: PerformanceMeasure;
-    new(): PerformanceMeasure;
-};
 
 declare class PerformanceObserver {
+    constructor(callback: PerformanceObserverCallback): this;
+    +supportedEntryTypes: ReadonlyArray<string>;
     disconnect(): void;
     observe(options: PerformanceObserverInit): void;
     takeRecords(): PerformanceEntryList;
 }
 
-declare var PerformanceObserver: {
-    prototype: PerformanceObserver;
-    new(callback: PerformanceObserverCallback): PerformanceObserver;
-};
-
 declare class PerformanceObserverEntryList {
+    constructor(): this;
     getEntries(): PerformanceEntryList;
     getEntriesByName(name: string, type?: string): PerformanceEntryList;
     getEntriesByType(type: string): PerformanceEntryList;
 }
 
-declare var PerformanceObserverEntryList: {
-    prototype: PerformanceObserverEntryList;
-    new(): PerformanceObserverEntryList;
-};
-
-declare class PerformanceResourceTiming extends PerformanceEntry {
+declare class PerformanceResourceTiming mixins PerformanceEntry {
+    constructor(): this;
     +connectEnd: number;
     +connectStart: number;
     +decodedBodySize: number;
@@ -2227,66 +2013,42 @@ declare class PerformanceResourceTiming extends PerformanceEntry {
     toJSON(): any;
 }
 
-declare var PerformanceResourceTiming: {
-    prototype: PerformanceResourceTiming;
-    new(): PerformanceResourceTiming;
-};
-
-declare class ProgressEvent extends Event {
+declare class ProgressEvent mixins Event {
+    constructor(type: string, eventInitDict?: ProgressEventInit): this;
     +lengthComputable: boolean;
     +loaded: number;
     +total: number;
 }
 
-declare var ProgressEvent: {
-    prototype: ProgressEvent;
-    new(type: string, eventInitDict?: ProgressEventInit): ProgressEvent;
-};
-
-declare class PromiseRejectionEvent extends Event {
+declare class PromiseRejectionEvent mixins Event {
+    constructor(type: string, eventInitDict: PromiseRejectionEventInit): this;
     +promise: Promise<any>;
     +reason: any;
 }
 
-declare var PromiseRejectionEvent: {
-    prototype: PromiseRejectionEvent;
-    new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
-};
-
-declare class PushEvent extends ExtendableEvent {
+declare class PushEvent mixins ExtendableEvent {
+    constructor(type: string, eventInitDict?: PushEventInit): this;
     +data: PushMessageData | null;
 }
 
-declare var PushEvent: {
-    prototype: PushEvent;
-    new(type: string, eventInitDict?: PushEventInit): PushEvent;
-};
-
 declare class PushManager {
+    constructor(): this;
+    +supportedContentEncodings: ReadonlyArray<string>;
     getSubscription(): Promise<PushSubscription | null>;
     permissionState(options?: PushSubscriptionOptionsInit): Promise<PushPermissionState>;
     subscribe(options?: PushSubscriptionOptionsInit): Promise<PushSubscription>;
 }
 
-declare var PushManager: {
-    prototype: PushManager;
-    new(): PushManager;
-    +supportedContentEncodings: ReadonlyArray<string>;
-};
-
 declare class PushMessageData {
+    constructor(): this;
     arrayBuffer(): ArrayBuffer;
     blob(): Blob;
     json(): any;
     text(): string;
 }
 
-declare var PushMessageData: {
-    prototype: PushMessageData;
-    new(): PushMessageData;
-};
-
 declare class PushSubscription {
+    constructor(): this;
     +endpoint: string;
     +expirationTime: number | null;
     +options: PushSubscriptionOptions;
@@ -2295,33 +2057,20 @@ declare class PushSubscription {
     unsubscribe(): Promise<boolean>;
 }
 
-declare var PushSubscription: {
-    prototype: PushSubscription;
-    new(): PushSubscription;
-};
-
-declare class PushSubscriptionChangeEvent extends ExtendableEvent {
+declare class PushSubscriptionChangeEvent mixins ExtendableEvent {
+    constructor(type: string, eventInitDict?: PushSubscriptionChangeInit): this;
     +newSubscription: PushSubscription | null;
     +oldSubscription: PushSubscription | null;
 }
 
-declare var PushSubscriptionChangeEvent: {
-    prototype: PushSubscriptionChangeEvent;
-    new(type: string, eventInitDict?: PushSubscriptionChangeInit): PushSubscriptionChangeEvent;
-};
-
 declare class PushSubscriptionOptions {
+    constructor(): this;
     +applicationServerKey: ArrayBuffer | null;
     +userVisibleOnly: boolean;
 }
 
-declare var PushSubscriptionOptions: {
-    prototype: PushSubscriptionOptions;
-    new(): PushSubscriptionOptions;
-};
-
-declare class ReadableByteStreamController {
-    +byobRequest: ReadableStreamBYOBRequest | undefined;
+declare type ReadableByteStreamController = interface {
+    +byobRequest: ReadableStreamBYOBRequest | void;
     +desiredSize: number | null;
     close(): void;
     enqueue(chunk: ArrayBufferView): void;
@@ -2329,70 +2078,66 @@ declare class ReadableByteStreamController {
 }
 
 declare class ReadableStream<R = any> {
+    constructor(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number, size?: void }): ReadableStream<Uint8Array>;
+    constructror<R>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
     +locked: boolean;
     cancel(reason?: any): Promise<void>;
     getReader(options: { mode: "byob" }): ReadableStreamBYOBReader;
     getReader(): ReadableStreamDefaultReader<R>;
-    pipeThrough<T>({ writable, readable }: { writable: WritableStream<R>, readable: ReadableStream<T> }, options?: PipeOptions): ReadableStream<T>;
+    pipeThrough<T>(options: { writable: WritableStream<R>, readable: ReadableStream<T> }, options?: PipeOptions): ReadableStream<T>;
     pipeTo(dest: WritableStream<R>, options?: PipeOptions): Promise<void>;
     tee(): [ReadableStream<R>, ReadableStream<R>];
 }
 
-declare var ReadableStream: {
-    prototype: ReadableStream;
-    new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number, size?: undefined }): ReadableStream<Uint8Array>;
-    new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
-};
-
 declare class ReadableStreamBYOBReader {
+    constructor(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader;
     +closed: Promise<void>;
     cancel(reason?: any): Promise<void>;
-    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
+    read<T: ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
     releaseLock(): void;
 }
 
-declare var ReadableStreamBYOBReader: {
-    prototype: ReadableStreamBYOBReader;
-    new(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader;
-};
-
-declare class ReadableStreamBYOBRequest {
+declare type ReadableStreamBYOBRequest = interface {
     +view: ArrayBufferView;
     respond(bytesWritten: number): void;
     respondWithNewView(view: ArrayBufferView): void;
 }
 
-declare class ReadableStreamDefaultController<R = any> {
+declare type ReadableStreamDefaultController<R = any> = interface {
     +desiredSize: number | null;
     close(): void;
     enqueue(chunk: R): void;
     error(error?: any): void;
 }
 
-declare class ReadableStreamDefaultReader<R = any> {
+declare type ReadableStreamDefaultReader<R = any> = interface {
     +closed: Promise<void>;
     cancel(reason?: any): Promise<void>;
     read(): Promise<ReadableStreamReadResult<R>>;
     releaseLock(): void;
 }
 
-declare class ReadableStreamReadResult<T> {
+declare type ReadableStreamReadResult<T> = interface {
     done: boolean;
     value: T;
 }
 
 declare class ReadableStreamReader<R = any> {
+    constructor(): this;
     cancel(): Promise<void>;
     read(): Promise<ReadableStreamReadResult<R>>;
     releaseLock(): void;
 }
 
-declare var ReadableStreamReader: {
-    prototype: ReadableStreamReader;
-    new(): ReadableStreamReader;
-};
-
-declare class Request extends Body {
+declare class Request implements Body {
+    constructor(input: RequestInfo, init?: RequestInit): this;
+    +body: ReadableStream<Uint8Array> | null;
+    +bodyUsed: boolean;
+    arrayBuffer(): Promise<ArrayBuffer>;
+    blob(): Promise<Blob>;
+    formData(): Promise<FormData>;
+    json(): Promise<any>;
+    text(): Promise<string>;
     /**
      * Returns the cache mode associated with request, which is a string indicating
      * how the request will interact with the browser's cache when fetching.
@@ -2472,12 +2217,17 @@ declare class Request extends Body {
     clone(): Request;
 }
 
-declare var Request: {
-    prototype: Request;
-    new(input: RequestInfo, init?: RequestInit): Request;
-};
-
-declare class Response extends Body {
+declare class Response implements Body {
+    constructor(body?: BodyInit | null, init?: ResponseInit): this;
+    error(): Response;
+    redirect(url: string, status?: number): Response;
+    +body: ReadableStream<Uint8Array> | null;
+    +bodyUsed: boolean;
+    arrayBuffer(): Promise<ArrayBuffer>;
+    blob(): Promise<Blob>;
+    formData(): Promise<FormData>;
+    json(): Promise<any>;
+    text(): Promise<string>;
     +headers: Headers;
     +ok: boolean;
     +redirected: boolean;
@@ -2489,107 +2239,94 @@ declare class Response extends Body {
     clone(): Response;
 }
 
-declare var Response: {
-    prototype: Response;
-    new(body?: BodyInit | null, init?: ResponseInit): Response;
-    error(): Response;
-    redirect(url: string, status?: number): Response;
-};
-
-interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
-    "statechange": Event;
+type ServiceWorkerEventMap = AbstractWorkerEventMap & {
+    "statechange": Event,
+    [key: string]: Event,
 }
 
-declare class ServiceWorker extends EventTarget, AbstractWorker {
-    onstatechange: ((this: ServiceWorker, ev: Event) => any) | null;
+declare class ServiceWorker mixins EventTarget implements AbstractWorker {
+    constructor(): this;
+    onerror: ((/*this: AbstractWorker, */ev: ErrorEvent) => any) | null;
+    onstatechange: ((/*this: ServiceWorker, */ev: Event) => any) | null;
     +scriptURL: string;
     +state: ServiceWorkerState;
     postMessage(message: any, transfer?: Transferable[]): void;
-    addEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<ServiceWorkerEventMap>>(type: K, listener: (/*this: ServiceWorker, */ev: $ElementType<ServiceWorkerEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<ServiceWorkerEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<ServiceWorkerEventMap>>(type: K, listener: (/*this: ServiceWorker, */ev: $ElementType<ServiceWorkerEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<ServiceWorkerEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorker: {
-    prototype: ServiceWorker;
-    new(): ServiceWorker;
-};
-
-interface ServiceWorkerContainerEventMap {
-    "controllerchange": Event;
-    "message": MessageEvent;
-    "messageerror": MessageEvent;
+type ServiceWorkerContainerEventMap = & {
+    "controllerchange": Event,
+    "message": MessageEvent,
+    "messageerror": MessageEvent,
+    [key: string]: Event,
 }
 
-declare class ServiceWorkerContainer extends EventTarget {
+declare class ServiceWorkerContainer mixins EventTarget {
+    constructor(): this;
     +controller: ServiceWorker | null;
-    oncontrollerchange: ((this: ServiceWorkerContainer, ev: Event) => any) | null;
-    onmessage: ((this: ServiceWorkerContainer, ev: MessageEvent) => any) | null;
-    onmessageerror: ((this: ServiceWorkerContainer, ev: MessageEvent) => any) | null;
+    oncontrollerchange: ((/*this: ServiceWorkerContainer, */ev: Event) => any) | null;
+    onmessage: ((/*this: ServiceWorkerContainer, */ev: MessageEvent) => any) | null;
+    onmessageerror: ((/*this: ServiceWorkerContainer, */ev: MessageEvent) => any) | null;
     +ready: Promise<ServiceWorkerRegistration>;
-    getRegistration(clientURL?: string): Promise<ServiceWorkerRegistration | undefined>;
+    getRegistration(clientURL?: string): Promise<ServiceWorkerRegistration | void>;
     getRegistrations(): Promise<ReadonlyArray<ServiceWorkerRegistration>>;
     register(scriptURL: string, options?: RegistrationOptions): Promise<ServiceWorkerRegistration>;
     startMessages(): void;
-    addEventListener<K extends keyof ServiceWorkerContainerEventMap>(type: K, listener: (this: ServiceWorkerContainer, ev: ServiceWorkerContainerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof ServiceWorkerContainerEventMap>(type: K, listener: (this: ServiceWorkerContainer, ev: ServiceWorkerContainerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<ServiceWorkerContainerEventMap>>(type: K, listener: (/*this: ServiceWorkerContainer, */ev: $ElementType<ServiceWorkerContainerEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<ServiceWorkerContainerEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<ServiceWorkerContainerEventMap>>(type: K, listener: (/*this: ServiceWorkerContainer, */ev: $ElementType<ServiceWorkerContainerEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<ServiceWorkerContainerEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorkerContainer: {
-    prototype: ServiceWorkerContainer;
-    new(): ServiceWorkerContainer;
-};
-
-interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
-    "activate": ExtendableEvent;
-    "fetch": FetchEvent;
-    "install": ExtendableEvent;
-    "message": ExtendableMessageEvent;
-    "messageerror": MessageEvent;
-    "notificationclick": NotificationEvent;
-    "notificationclose": NotificationEvent;
-    "push": PushEvent;
-    "pushsubscriptionchange": PushSubscriptionChangeEvent;
-    "sync": SyncEvent;
+type ServiceWorkerGlobalScopeEventMap = WorkerGlobalScopeEventMap & {
+    "activate": ExtendableEvent,
+    "fetch": FetchEvent,
+    "install": ExtendableEvent,
+    "message": ExtendableMessageEvent,
+    "messageerror": MessageEvent,
+    "notificationclick": NotificationEvent,
+    "notificationclose": NotificationEvent,
+    "push": PushEvent,
+    "pushsubscriptionchange": PushSubscriptionChangeEvent,
+    "sync": SyncEvent,
+    [key: string]: Event,
 }
 
-declare class ServiceWorkerGlobalScope extends WorkerGlobalScope {
+declare class ServiceWorkerGlobalScope mixins WorkerGlobalScope {
+    constructor(): this;
     +clients: Clients;
-    onactivate: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
-    onfetch: ((this: ServiceWorkerGlobalScope, ev: FetchEvent) => any) | null;
-    oninstall: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
-    onmessage: ((this: ServiceWorkerGlobalScope, ev: ExtendableMessageEvent) => any) | null;
-    onmessageerror: ((this: ServiceWorkerGlobalScope, ev: MessageEvent) => any) | null;
-    onnotificationclick: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
-    onnotificationclose: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
-    onpush: ((this: ServiceWorkerGlobalScope, ev: PushEvent) => any) | null;
-    onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: PushSubscriptionChangeEvent) => any) | null;
-    onsync: ((this: ServiceWorkerGlobalScope, ev: SyncEvent) => any) | null;
+    onactivate: ((/*this: ServiceWorkerGlobalScope, */ev: ExtendableEvent) => any) | null;
+    onfetch: ((/*this: ServiceWorkerGlobalScope, */ev: FetchEvent) => any) | null;
+    oninstall: ((/*this: ServiceWorkerGlobalScope, */ev: ExtendableEvent) => any) | null;
+    onmessage: ((/*this: ServiceWorkerGlobalScope, */ev: ExtendableMessageEvent) => any) | null;
+    onmessageerror: ((/*this: ServiceWorkerGlobalScope, */ev: MessageEvent) => any) | null;
+    onnotificationclick: ((/*this: ServiceWorkerGlobalScope, */ev: NotificationEvent) => any) | null;
+    onnotificationclose: ((/*this: ServiceWorkerGlobalScope, */ev: NotificationEvent) => any) | null;
+    onpush: ((/*this: ServiceWorkerGlobalScope, */ev: PushEvent) => any) | null;
+    onpushsubscriptionchange: ((/*this: ServiceWorkerGlobalScope, */ev: PushSubscriptionChangeEvent) => any) | null;
+    onsync: ((/*this: ServiceWorkerGlobalScope, */ev: SyncEvent) => any) | null;
     +registration: ServiceWorkerRegistration;
     skipWaiting(): Promise<void>;
-    addEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<ServiceWorkerGlobalScopeEventMap>>(type: K, listener: (/*this: ServiceWorkerGlobalScope, */ev: $ElementType<ServiceWorkerGlobalScopeEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<ServiceWorkerGlobalScopeEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<ServiceWorkerGlobalScopeEventMap>>(type: K, listener: (/*this: ServiceWorkerGlobalScope, */ev: $ElementType<ServiceWorkerGlobalScopeEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<ServiceWorkerGlobalScopeEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorkerGlobalScope: {
-    prototype: ServiceWorkerGlobalScope;
-    new(): ServiceWorkerGlobalScope;
-};
-
-interface ServiceWorkerRegistrationEventMap {
-    "updatefound": Event;
+type ServiceWorkerRegistrationEventMap = & {
+    "updatefound": Event,
+    [key: string]: Event,
 }
 
-declare class ServiceWorkerRegistration extends EventTarget {
+declare class ServiceWorkerRegistration mixins EventTarget {
+    constructor(): this;
     +active: ServiceWorker | null;
     +installing: ServiceWorker | null;
     +navigationPreload: NavigationPreloadManager;
-    onupdatefound: ((this: ServiceWorkerRegistration, ev: Event) => any) | null;
+    onupdatefound: ((/*this: ServiceWorkerRegistration, */ev: Event) => any) | null;
     +pushManager: PushManager;
     +scope: string;
     +sync: SyncManager;
@@ -2599,28 +2336,20 @@ declare class ServiceWorkerRegistration extends EventTarget {
     showNotification(title: string, options?: NotificationOptions): Promise<void>;
     unregister(): Promise<boolean>;
     update(): Promise<void>;
-    addEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<ServiceWorkerRegistrationEventMap>>(type: K, listener: (/*this: ServiceWorkerRegistration, */ev: $ElementType<ServiceWorkerRegistrationEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<ServiceWorkerRegistrationEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<ServiceWorkerRegistrationEventMap>>(type: K, listener: (/*this: ServiceWorkerRegistration, */ev: $ElementType<ServiceWorkerRegistrationEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<ServiceWorkerRegistrationEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorkerRegistration: {
-    prototype: ServiceWorkerRegistration;
-    new(): ServiceWorkerRegistration;
-};
-
 declare class StorageManager {
+    constructor(): this;
     estimate(): Promise<StorageEstimate>;
     persisted(): Promise<boolean>;
 }
 
-declare var StorageManager: {
-    prototype: StorageManager;
-    new(): StorageManager;
-};
-
 declare class SubtleCrypto {
+    constructor(): this;
     decrypt(algorithm: string | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): PromiseLike<ArrayBuffer>;
     deriveBits(algorithm: string | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, length: number): PromiseLike<ArrayBuffer>;
     deriveKey(algorithm: string | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: string | AesDerivedKeyParams | HmacImportParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKey>;
@@ -2641,32 +2370,20 @@ declare class SubtleCrypto {
     wrapKey(format: string, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: string | Algorithm): PromiseLike<ArrayBuffer>;
 }
 
-declare var SubtleCrypto: {
-    prototype: SubtleCrypto;
-    new(): SubtleCrypto;
-};
-
-declare class SyncEvent extends ExtendableEvent {
+declare class SyncEvent mixins ExtendableEvent {
+    constructor(type: string, init: SyncEventInit): this;
     +lastChance: boolean;
     +tag: string;
 }
 
-declare var SyncEvent: {
-    prototype: SyncEvent;
-    new(type: string, init: SyncEventInit): SyncEvent;
-};
-
 declare class SyncManager {
+    constructor(): this;
     getTags(): Promise<string[]>;
     register(tag: string): Promise<void>;
 }
 
-declare var SyncManager: {
-    prototype: SyncManager;
-    new(): SyncManager;
-};
-
 declare class TextDecoder {
+    constructor(label?: string, options?: TextDecoderOptions): this;
     /**
      * Returns encoding's name, lowercased.
      */
@@ -2696,12 +2413,8 @@ declare class TextDecoder {
     decode(input?: BufferSource, options?: TextDecodeOptions): string;
 }
 
-declare var TextDecoder: {
-    prototype: TextDecoder;
-    new(label?: string, options?: TextDecoderOptions): TextDecoder;
-};
-
 declare class TextEncoder {
+    constructor(): this;
     /**
      * Returns "utf-8".
      */
@@ -2712,12 +2425,8 @@ declare class TextEncoder {
     encode(input?: string): Uint8Array;
 }
 
-declare var TextEncoder: {
-    prototype: TextEncoder;
-    new(): TextEncoder;
-};
-
 declare class TextMetrics {
+    constructor(): this;
     +actualBoundingBoxAscent: number;
     +actualBoundingBoxDescent: number;
     +actualBoundingBoxLeft: number;
@@ -2735,22 +2444,13 @@ declare class TextMetrics {
     +width: number;
 }
 
-declare var TextMetrics: {
-    prototype: TextMetrics;
-    new(): TextMetrics;
-};
-
 declare class TransformStream<I = any, O = any> {
+    constructror<I, O>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>;
     +readable: ReadableStream<O>;
     +writable: WritableStream<I>;
 }
 
-declare var TransformStream: {
-    prototype: TransformStream;
-    new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>;
-};
-
-declare class TransformStreamDefaultController<O = any> {
+declare type TransformStreamDefaultController<O = any> = interface {
     +desiredSize: number | null;
     enqueue(chunk: O): void;
     error(reason?: any): void;
@@ -2758,6 +2458,9 @@ declare class TransformStreamDefaultController<O = any> {
 }
 
 declare class URL {
+    constructor(url: string, base?: string | URL): URL;
+    createObjectURL(object: any): string;
+    revokeObjectURL(url: string): void;
     hash: string;
     host: string;
     hostname: string;
@@ -2773,14 +2476,8 @@ declare class URL {
     toJSON(): string;
 }
 
-declare var URL: {
-    prototype: URL;
-    new(url: string, base?: string | URL): URL;
-    createObjectURL(object: any): string;
-    revokeObjectURL(url: string): void;
-};
-
 declare class URLSearchParams {
+    constructor(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
     /**
      * Appends a specified key/value pair as a new search parameter.
      */
@@ -2809,18 +2506,13 @@ declare class URLSearchParams {
     forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
 }
 
-declare var URLSearchParams: {
-    prototype: URLSearchParams;
-    new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
-};
-
-declare class WEBGL_color_buffer_float {
+declare type WEBGL_color_buffer_float = interface {
     +FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT: GLenum;
     +RGBA32F_EXT: GLenum;
     +UNSIGNED_NORMALIZED_EXT: GLenum;
 }
 
-declare class WEBGL_compressed_texture_astc {
+declare type WEBGL_compressed_texture_astc = interface {
     getSupportedProfiles(): string[];
     +COMPRESSED_RGBA_ASTC_10x10_KHR: GLenum;
     +COMPRESSED_RGBA_ASTC_10x5_KHR: GLenum;
@@ -2852,34 +2544,34 @@ declare class WEBGL_compressed_texture_astc {
     +COMPRESSED_SRGB8_ALPHA8_ASTC_8x8_KHR: GLenum;
 }
 
-declare class WEBGL_compressed_texture_s3tc {
+declare type WEBGL_compressed_texture_s3tc = interface {
     +COMPRESSED_RGBA_S3TC_DXT1_EXT: GLenum;
     +COMPRESSED_RGBA_S3TC_DXT3_EXT: GLenum;
     +COMPRESSED_RGBA_S3TC_DXT5_EXT: GLenum;
     +COMPRESSED_RGB_S3TC_DXT1_EXT: GLenum;
 }
 
-declare class WEBGL_compressed_texture_s3tc_srgb {
+declare type WEBGL_compressed_texture_s3tc_srgb = interface {
     +COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT: GLenum;
     +COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT: GLenum;
     +COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT: GLenum;
     +COMPRESSED_SRGB_S3TC_DXT1_EXT: GLenum;
 }
 
-declare class WEBGL_debug_renderer_info {
+declare type WEBGL_debug_renderer_info = interface {
     +UNMASKED_RENDERER_WEBGL: GLenum;
     +UNMASKED_VENDOR_WEBGL: GLenum;
 }
 
-declare class WEBGL_debug_shaders {
+declare type WEBGL_debug_shaders = interface {
     getTranslatedShaderSource(shader: WebGLShader): string;
 }
 
-declare class WEBGL_depth_texture {
+declare type WEBGL_depth_texture = interface {
     +UNSIGNED_INT_24_8_WEBGL: GLenum;
 }
 
-declare class WEBGL_draw_buffers {
+declare type WEBGL_draw_buffers = interface {
     drawBuffersWEBGL(buffers: GLenum[]): void;
     +COLOR_ATTACHMENT0_WEBGL: GLenum;
     +COLOR_ATTACHMENT10_WEBGL: GLenum;
@@ -2917,77 +2609,45 @@ declare class WEBGL_draw_buffers {
     +MAX_DRAW_BUFFERS_WEBGL: GLenum;
 }
 
-declare class WEBGL_lose_context {
+declare type WEBGL_lose_context = interface {
     loseContext(): void;
     restoreContext(): void;
 }
 
 declare class WebGLActiveInfo {
+    constructor(): this;
     +name: string;
     +size: GLint;
     +type: GLenum;
 }
 
-declare var WebGLActiveInfo: {
-    prototype: WebGLActiveInfo;
-    new(): WebGLActiveInfo;
-};
-
-declare class WebGLBuffer extends WebGLObject {
+declare class WebGLBuffer mixins WebGLObject {
+    constructor(): this;
 }
 
-declare var WebGLBuffer: {
-    prototype: WebGLBuffer;
-    new(): WebGLBuffer;
-};
-
-declare class WebGLContextEvent extends Event {
+declare class WebGLContextEvent mixins Event {
+    constructor(type: string, eventInit?: WebGLContextEventInit): this;
     +statusMessage: string;
 }
 
-declare var WebGLContextEvent: {
-    prototype: WebGLContextEvent;
-    new(type: string, eventInit?: WebGLContextEventInit): WebGLContextEvent;
-};
-
-declare class WebGLFramebuffer extends WebGLObject {
+declare class WebGLFramebuffer mixins WebGLObject {
+    constructor(): this;
 }
-
-declare var WebGLFramebuffer: {
-    prototype: WebGLFramebuffer;
-    new(): WebGLFramebuffer;
-};
 
 declare class WebGLObject {
+    constructor(): this;
 }
 
-declare var WebGLObject: {
-    prototype: WebGLObject;
-    new(): WebGLObject;
-};
-
-declare class WebGLProgram extends WebGLObject {
+declare class WebGLProgram mixins WebGLObject {
+    constructor(): this;
 }
 
-declare var WebGLProgram: {
-    prototype: WebGLProgram;
-    new(): WebGLProgram;
-};
-
-declare class WebGLRenderbuffer extends WebGLObject {
+declare class WebGLRenderbuffer mixins WebGLObject {
+    constructor(): this;
 }
 
-declare var WebGLRenderbuffer: {
-    prototype: WebGLRenderbuffer;
-    new(): WebGLRenderbuffer;
-};
-
-declare class WebGLRenderingContext extends WebGLRenderingContextBase {
-}
-
-declare var WebGLRenderingContext: {
-    prototype: WebGLRenderingContext;
-    new(): WebGLRenderingContext;
+declare class WebGLRenderingContext implements WebGLRenderingContextBase {
+    constructor(): this;
     +ACTIVE_ATTRIBUTES: GLenum;
     +ACTIVE_TEXTURE: GLenum;
     +ACTIVE_UNIFORMS: GLenum;
@@ -3284,9 +2944,6 @@ declare var WebGLRenderingContext: {
     +VERTEX_SHADER: GLenum;
     +VIEWPORT: GLenum;
     +ZERO: GLenum;
-};
-
-declare class WebGLRenderingContextBase {
     +drawingBufferHeight: GLsizei;
     +drawingBufferWidth: GLsizei;
     activeTexture(texture: GLenum): void;
@@ -3400,7 +3057,173 @@ declare class WebGLRenderingContextBase {
     isTexture(texture: WebGLTexture | null): GLboolean;
     lineWidth(width: GLfloat): void;
     linkProgram(program: WebGLProgram): void;
-    pixelStorei(pname: GLenum, param: GLint): void;
+    pixelStorei(pname: GLenum, param: GLint | GLboolean): void;
+    polygonOffset(factor: GLfloat, units: GLfloat): void;
+    readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, pixels: ArrayBufferView | null): void;
+    renderbufferStorage(target: GLenum, internalformat: GLenum, width: GLsizei, height: GLsizei): void;
+    sampleCoverage(value: GLclampf, invert: GLboolean): void;
+    scissor(x: GLint, y: GLint, width: GLsizei, height: GLsizei): void;
+    shaderSource(shader: WebGLShader, source: string): void;
+    stencilFunc(func: GLenum, ref: GLint, mask: GLuint): void;
+    stencilFuncSeparate(face: GLenum, func: GLenum, ref: GLint, mask: GLuint): void;
+    stencilMask(mask: GLuint): void;
+    stencilMaskSeparate(face: GLenum, mask: GLuint): void;
+    stencilOp(fail: GLenum, zfail: GLenum, zpass: GLenum): void;
+    stencilOpSeparate(face: GLenum, fail: GLenum, zfail: GLenum, zpass: GLenum): void;
+    texImage2D(target: GLenum, level: GLint, internalformat: GLint, width: GLsizei, height: GLsizei, border: GLint, format: GLenum, type: GLenum, pixels: ArrayBufferView | null): void;
+    texImage2D(target: GLenum, level: GLint, internalformat: GLint, format: GLenum, type: GLenum, source: TexImageSource): void;
+    texParameterf(target: GLenum, pname: GLenum, param: GLfloat): void;
+    texParameteri(target: GLenum, pname: GLenum, param: GLint): void;
+    texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, pixels: ArrayBufferView | null): void;
+    texSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, format: GLenum, type: GLenum, source: TexImageSource): void;
+    uniform1f(location: WebGLUniformLocation | null, x: GLfloat): void;
+    uniform1fv(location: WebGLUniformLocation | null, v: Float32List): void;
+    uniform1i(location: WebGLUniformLocation | null, x: GLint): void;
+    uniform1iv(location: WebGLUniformLocation | null, v: Int32List): void;
+    uniform2f(location: WebGLUniformLocation | null, x: GLfloat, y: GLfloat): void;
+    uniform2fv(location: WebGLUniformLocation | null, v: Float32List): void;
+    uniform2i(location: WebGLUniformLocation | null, x: GLint, y: GLint): void;
+    uniform2iv(location: WebGLUniformLocation | null, v: Int32List): void;
+    uniform3f(location: WebGLUniformLocation | null, x: GLfloat, y: GLfloat, z: GLfloat): void;
+    uniform3fv(location: WebGLUniformLocation | null, v: Float32List): void;
+    uniform3i(location: WebGLUniformLocation | null, x: GLint, y: GLint, z: GLint): void;
+    uniform3iv(location: WebGLUniformLocation | null, v: Int32List): void;
+    uniform4f(location: WebGLUniformLocation | null, x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat): void;
+    uniform4fv(location: WebGLUniformLocation | null, v: Float32List): void;
+    uniform4i(location: WebGLUniformLocation | null, x: GLint, y: GLint, z: GLint, w: GLint): void;
+    uniform4iv(location: WebGLUniformLocation | null, v: Int32List): void;
+    uniformMatrix2fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void;
+    uniformMatrix3fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void;
+    uniformMatrix4fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void;
+    useProgram(program: WebGLProgram | null): void;
+    validateProgram(program: WebGLProgram): void;
+    vertexAttrib1f(index: GLuint, x: GLfloat): void;
+    vertexAttrib1fv(index: GLuint, values: Float32List): void;
+    vertexAttrib2f(index: GLuint, x: GLfloat, y: GLfloat): void;
+    vertexAttrib2fv(index: GLuint, values: Float32List): void;
+    vertexAttrib3f(index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat): void;
+    vertexAttrib3fv(index: GLuint, values: Float32List): void;
+    vertexAttrib4f(index: GLuint, x: GLfloat, y: GLfloat, z: GLfloat, w: GLfloat): void;
+    vertexAttrib4fv(index: GLuint, values: Float32List): void;
+    vertexAttribPointer(index: GLuint, size: GLint, type: GLenum, normalized: GLboolean, stride: GLsizei, offset: GLintptr): void;
+    viewport(x: GLint, y: GLint, width: GLsizei, height: GLsizei): void;
+}
+
+declare type WebGLRenderingContextBase = interface {
+    +drawingBufferHeight: GLsizei;
+    +drawingBufferWidth: GLsizei;
+    activeTexture(texture: GLenum): void;
+    attachShader(program: WebGLProgram, shader: WebGLShader): void;
+    bindAttribLocation(program: WebGLProgram, index: GLuint, name: string): void;
+    bindBuffer(target: GLenum, buffer: WebGLBuffer | null): void;
+    bindFramebuffer(target: GLenum, framebuffer: WebGLFramebuffer | null): void;
+    bindRenderbuffer(target: GLenum, renderbuffer: WebGLRenderbuffer | null): void;
+    bindTexture(target: GLenum, texture: WebGLTexture | null): void;
+    blendColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf): void;
+    blendEquation(mode: GLenum): void;
+    blendEquationSeparate(modeRGB: GLenum, modeAlpha: GLenum): void;
+    blendFunc(sfactor: GLenum, dfactor: GLenum): void;
+    blendFuncSeparate(srcRGB: GLenum, dstRGB: GLenum, srcAlpha: GLenum, dstAlpha: GLenum): void;
+    bufferData(target: GLenum, size: GLsizeiptr, usage: GLenum): void;
+    bufferData(target: GLenum, data: BufferSource | null, usage: GLenum): void;
+    bufferSubData(target: GLenum, offset: GLintptr, data: BufferSource): void;
+    checkFramebufferStatus(target: GLenum): GLenum;
+    clear(mask: GLbitfield): void;
+    clearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf): void;
+    clearDepth(depth: GLclampf): void;
+    clearStencil(s: GLint): void;
+    colorMask(red: GLboolean, green: GLboolean, blue: GLboolean, alpha: GLboolean): void;
+    compileShader(shader: WebGLShader): void;
+    compressedTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, border: GLint, data: ArrayBufferView): void;
+    compressedTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, width: GLsizei, height: GLsizei, format: GLenum, data: ArrayBufferView): void;
+    copyTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, x: GLint, y: GLint, width: GLsizei, height: GLsizei, border: GLint): void;
+    copyTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, x: GLint, y: GLint, width: GLsizei, height: GLsizei): void;
+    createBuffer(): WebGLBuffer | null;
+    createFramebuffer(): WebGLFramebuffer | null;
+    createProgram(): WebGLProgram | null;
+    createRenderbuffer(): WebGLRenderbuffer | null;
+    createShader(type: GLenum): WebGLShader | null;
+    createTexture(): WebGLTexture | null;
+    cullFace(mode: GLenum): void;
+    deleteBuffer(buffer: WebGLBuffer | null): void;
+    deleteFramebuffer(framebuffer: WebGLFramebuffer | null): void;
+    deleteProgram(program: WebGLProgram | null): void;
+    deleteRenderbuffer(renderbuffer: WebGLRenderbuffer | null): void;
+    deleteShader(shader: WebGLShader | null): void;
+    deleteTexture(texture: WebGLTexture | null): void;
+    depthFunc(func: GLenum): void;
+    depthMask(flag: GLboolean): void;
+    depthRange(zNear: GLclampf, zFar: GLclampf): void;
+    detachShader(program: WebGLProgram, shader: WebGLShader): void;
+    disable(cap: GLenum): void;
+    disableVertexAttribArray(index: GLuint): void;
+    drawArrays(mode: GLenum, first: GLint, count: GLsizei): void;
+    drawElements(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr): void;
+    enable(cap: GLenum): void;
+    enableVertexAttribArray(index: GLuint): void;
+    finish(): void;
+    flush(): void;
+    framebufferRenderbuffer(target: GLenum, attachment: GLenum, renderbuffertarget: GLenum, renderbuffer: WebGLRenderbuffer | null): void;
+    framebufferTexture2D(target: GLenum, attachment: GLenum, textarget: GLenum, texture: WebGLTexture | null, level: GLint): void;
+    frontFace(mode: GLenum): void;
+    generateMipmap(target: GLenum): void;
+    getActiveAttrib(program: WebGLProgram, index: GLuint): WebGLActiveInfo | null;
+    getActiveUniform(program: WebGLProgram, index: GLuint): WebGLActiveInfo | null;
+    getAttachedShaders(program: WebGLProgram): WebGLShader[] | null;
+    getAttribLocation(program: WebGLProgram, name: string): GLint;
+    getBufferParameter(target: GLenum, pname: GLenum): any;
+    getContextAttributes(): WebGLContextAttributes | null;
+    getError(): GLenum;
+    getExtension(extensionName: "EXT_blend_minmax"): EXT_blend_minmax | null;
+    getExtension(extensionName: "EXT_texture_filter_anisotropic"): EXT_texture_filter_anisotropic | null;
+    getExtension(extensionName: "EXT_frag_depth"): EXT_frag_depth | null;
+    getExtension(extensionName: "EXT_shader_texture_lod"): EXT_shader_texture_lod | null;
+    getExtension(extensionName: "EXT_sRGB"): EXT_sRGB | null;
+    getExtension(extensionName: "OES_vertex_array_object"): OES_vertex_array_object | null;
+    getExtension(extensionName: "WEBGL_color_buffer_float"): WEBGL_color_buffer_float | null;
+    getExtension(extensionName: "WEBGL_compressed_texture_astc"): WEBGL_compressed_texture_astc | null;
+    getExtension(extensionName: "WEBGL_compressed_texture_s3tc_srgb"): WEBGL_compressed_texture_s3tc_srgb | null;
+    getExtension(extensionName: "WEBGL_debug_shaders"): WEBGL_debug_shaders | null;
+    getExtension(extensionName: "WEBGL_draw_buffers"): WEBGL_draw_buffers | null;
+    getExtension(extensionName: "WEBGL_lose_context"): WEBGL_lose_context | null;
+    getExtension(extensionName: "WEBGL_depth_texture"): WEBGL_depth_texture | null;
+    getExtension(extensionName: "WEBGL_debug_renderer_info"): WEBGL_debug_renderer_info | null;
+    getExtension(extensionName: "WEBGL_compressed_texture_s3tc"): WEBGL_compressed_texture_s3tc | null;
+    getExtension(extensionName: "OES_texture_half_float_linear"): OES_texture_half_float_linear | null;
+    getExtension(extensionName: "OES_texture_half_float"): OES_texture_half_float | null;
+    getExtension(extensionName: "OES_texture_float_linear"): OES_texture_float_linear | null;
+    getExtension(extensionName: "OES_texture_float"): OES_texture_float | null;
+    getExtension(extensionName: "OES_standard_derivatives"): OES_standard_derivatives | null;
+    getExtension(extensionName: "OES_element_index_uint"): OES_element_index_uint | null;
+    getExtension(extensionName: "ANGLE_instanced_arrays"): ANGLE_instanced_arrays | null;
+    getExtension(extensionName: string): any;
+    getFramebufferAttachmentParameter(target: GLenum, attachment: GLenum, pname: GLenum): any;
+    getParameter(pname: GLenum): any;
+    getProgramInfoLog(program: WebGLProgram): string | null;
+    getProgramParameter(program: WebGLProgram, pname: GLenum): any;
+    getRenderbufferParameter(target: GLenum, pname: GLenum): any;
+    getShaderInfoLog(shader: WebGLShader): string | null;
+    getShaderParameter(shader: WebGLShader, pname: GLenum): any;
+    getShaderPrecisionFormat(shadertype: GLenum, precisiontype: GLenum): WebGLShaderPrecisionFormat | null;
+    getShaderSource(shader: WebGLShader): string | null;
+    getSupportedExtensions(): string[] | null;
+    getTexParameter(target: GLenum, pname: GLenum): any;
+    getUniform(program: WebGLProgram, location: WebGLUniformLocation): any;
+    getUniformLocation(program: WebGLProgram, name: string): WebGLUniformLocation | null;
+    getVertexAttrib(index: GLuint, pname: GLenum): any;
+    getVertexAttribOffset(index: GLuint, pname: GLenum): GLintptr;
+    hint(target: GLenum, mode: GLenum): void;
+    isBuffer(buffer: WebGLBuffer | null): GLboolean;
+    isContextLost(): boolean;
+    isEnabled(cap: GLenum): GLboolean;
+    isFramebuffer(framebuffer: WebGLFramebuffer | null): GLboolean;
+    isProgram(program: WebGLProgram | null): GLboolean;
+    isRenderbuffer(renderbuffer: WebGLRenderbuffer | null): GLboolean;
+    isShader(shader: WebGLShader | null): GLboolean;
+    isTexture(texture: WebGLTexture | null): GLboolean;
+    lineWidth(width: GLfloat): void;
+    linkProgram(program: WebGLProgram): void;
+    pixelStorei(pname: GLenum, param: GLint | GLboolean): void;
     polygonOffset(factor: GLfloat, units: GLfloat): void;
     readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, pixels: ArrayBufferView | null): void;
     renderbufferStorage(target: GLenum, internalformat: GLenum, width: GLsizei, height: GLsizei): void;
@@ -3748,59 +3571,49 @@ declare class WebGLRenderingContextBase {
     +ZERO: GLenum;
 }
 
-declare class WebGLShader extends WebGLObject {
+declare class WebGLShader mixins WebGLObject {
+    constructor(): this;
 }
 
-declare var WebGLShader: {
-    prototype: WebGLShader;
-    new(): WebGLShader;
-};
-
 declare class WebGLShaderPrecisionFormat {
+    constructor(): this;
     +precision: GLint;
     +rangeMax: GLint;
     +rangeMin: GLint;
 }
 
-declare var WebGLShaderPrecisionFormat: {
-    prototype: WebGLShaderPrecisionFormat;
-    new(): WebGLShaderPrecisionFormat;
-};
-
-declare class WebGLTexture extends WebGLObject {
+declare class WebGLTexture mixins WebGLObject {
+    constructor(): this;
 }
-
-declare var WebGLTexture: {
-    prototype: WebGLTexture;
-    new(): WebGLTexture;
-};
 
 declare class WebGLUniformLocation {
+    constructor(): this;
 }
 
-declare var WebGLUniformLocation: {
-    prototype: WebGLUniformLocation;
-    new(): WebGLUniformLocation;
-};
-
-declare class WebGLVertexArrayObjectOES extends WebGLObject {
+declare type WebGLVertexArrayObjectOES = interface extends WebGLObject {
 }
 
-interface WebSocketEventMap {
-    "close": CloseEvent;
-    "error": Event;
-    "message": MessageEvent;
-    "open": Event;
+type WebSocketEventMap = & {
+    "close": CloseEvent,
+    "error": Event,
+    "message": MessageEvent,
+    "open": Event,
+    [key: string]: Event,
 }
 
-declare class WebSocket extends EventTarget {
+declare class WebSocket mixins EventTarget {
+    constructor(url: string, protocols?: string | string[]): this;
+    +CLOSED: number;
+    +CLOSING: number;
+    +CONNECTING: number;
+    +OPEN: number;
     binaryType: BinaryType;
     +bufferedAmount: number;
     +extensions: string;
-    onclose: ((this: WebSocket, ev: CloseEvent) => any) | null;
-    onerror: ((this: WebSocket, ev: Event) => any) | null;
-    onmessage: ((this: WebSocket, ev: MessageEvent) => any) | null;
-    onopen: ((this: WebSocket, ev: Event) => any) | null;
+    onclose: ((/*this: WebSocket, */ev: CloseEvent) => any) | null;
+    onerror: ((/*this: WebSocket, */ev: Event) => any) | null;
+    onmessage: ((/*this: WebSocket, */ev: MessageEvent) => any) | null;
+    onopen: ((/*this: WebSocket, */ev: Event) => any) | null;
     +protocol: string;
     +readyState: number;
     +url: string;
@@ -3810,27 +3623,19 @@ declare class WebSocket extends EventTarget {
     +CLOSING: number;
     +CONNECTING: number;
     +OPEN: number;
-    addEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<WebSocketEventMap>>(type: K, listener: (/*this: WebSocket, */ev: $ElementType<WebSocketEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<WebSocketEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<WebSocketEventMap>>(type: K, listener: (/*this: WebSocket, */ev: $ElementType<WebSocketEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<WebSocketEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var WebSocket: {
-    prototype: WebSocket;
-    new(url: string, protocols?: string | string[]): WebSocket;
-    +CLOSED: number;
-    +CLOSING: number;
-    +CONNECTING: number;
-    +OPEN: number;
-};
-
-declare class WindowBase64 {
+declare type WindowBase64 = interface {
     atob(encodedString: string): string;
     btoa(rawString: string): string;
 }
 
-declare class WindowClient extends Client {
+declare class WindowClient mixins Client {
+    constructor(): this;
     +ancestorOrigins: ReadonlyArray<string>;
     +focused: boolean;
     +visibilityState: VisibilityState;
@@ -3838,16 +3643,11 @@ declare class WindowClient extends Client {
     navigate(url: string): Promise<WindowClient | null>;
 }
 
-declare var WindowClient: {
-    prototype: WindowClient;
-    new(): WindowClient;
-};
-
-declare class WindowConsole {
+declare type WindowConsole = interface {
     +console: Console;
 }
 
-declare class WindowOrWorkerGlobalScope {
+declare type WindowOrWorkerGlobalScope = interface {
     +caches: CacheStorage;
     +crypto: Crypto;
     +indexedDB: IDBFactory;
@@ -3865,49 +3665,66 @@ declare class WindowOrWorkerGlobalScope {
     setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 }
 
-interface WorkerEventMap extends AbstractWorkerEventMap {
-    "message": MessageEvent;
+type WorkerEventMap = AbstractWorkerEventMap & {
+    "message": MessageEvent,
+    [key: string]: Event,
 }
 
-declare class Worker extends EventTarget, AbstractWorker {
-    onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
+declare class Worker mixins EventTarget implements AbstractWorker {
+    constructor(stringUrl: string | URL, options?: WorkerOptions): Worker;
+    onerror: ((/*this: AbstractWorker, */ev: ErrorEvent) => any) | null;
+    onmessage: ((/*this: Worker, */ev: MessageEvent) => any) | null;
     postMessage(message: any, transfer?: Transferable[]): void;
     terminate(): void;
-    addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<WorkerEventMap>>(type: K, listener: (/*this: Worker, */ev: $ElementType<WorkerEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<WorkerEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<WorkerEventMap>>(type: K, listener: (/*this: Worker, */ev: $ElementType<WorkerEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<WorkerEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var Worker: {
-    prototype: Worker;
-    new(stringUrl: string, options?: WorkerOptions): Worker;
-};
-
-interface WorkerGlobalScopeEventMap {
-    "error": ErrorEvent;
+type WorkerGlobalScopeEventMap = & {
+    "error": ErrorEvent,
+    [key: string]: Event,
 }
 
-declare class WorkerGlobalScope extends EventTarget, WorkerUtils, WindowConsole, GlobalFetch, WindowOrWorkerGlobalScope {
+declare class WorkerGlobalScope mixins EventTarget implements WorkerUtils, WindowConsole, GlobalFetch, WindowOrWorkerGlobalScope {
+    constructor(): this;
+    +indexedDB: IDBFactory;
+    +msIndexedDB: IDBFactory;
+    +navigator: WorkerNavigator;
+    importScripts(...urls: string[]): void;
+    +console: Console;
+    fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+    +caches: CacheStorage;
+    +crypto: Crypto;
+    +indexedDB: IDBFactory;
+    +origin: string;
+    +performance: Performance;
+    atob(data: string): string;
+    btoa(data: string): string;
+    clearInterval(handle?: number): void;
+    clearTimeout(handle?: number): void;
+    createImageBitmap(image: ImageBitmapSource): Promise<ImageBitmap>;
+    createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number): Promise<ImageBitmap>;
+    fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+    queueMicrotask(callback: Function): void;
+    setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
+    setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     +caches: CacheStorage;
     +isSecureContext: boolean;
     +location: WorkerLocation;
-    onerror: ((this: WorkerGlobalScope, ev: ErrorEvent) => any) | null;
+    onerror: ((/*this: WorkerGlobalScope, */ev: ErrorEvent) => any) | null;
     +performance: Performance;
     +self: WorkerGlobalScope;
     msWriteProfilerMark(profilerMarkName: string): void;
-    addEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<WorkerGlobalScopeEventMap>>(type: K, listener: (/*this: WorkerGlobalScope, */ev: $ElementType<WorkerGlobalScopeEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<WorkerGlobalScopeEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<WorkerGlobalScopeEventMap>>(type: K, listener: (/*this: WorkerGlobalScope, */ev: $ElementType<WorkerGlobalScopeEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<WorkerGlobalScopeEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var WorkerGlobalScope: {
-    prototype: WorkerGlobalScope;
-    new(): WorkerGlobalScope;
-};
-
 declare class WorkerLocation {
+    constructor(): this;
     +hash: string;
     +host: string;
     +hostname: string;
@@ -3920,21 +3737,25 @@ declare class WorkerLocation {
     toString(): string;
 }
 
-declare var WorkerLocation: {
-    prototype: WorkerLocation;
-    new(): WorkerLocation;
-};
-
-declare class WorkerNavigator extends NavigatorID, NavigatorOnLine, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorStorage {
+declare class WorkerNavigator implements NavigatorID, NavigatorOnLine, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorStorage {
+    constructor(): this;
+    +appCodeName: string;
+    +appName: string;
+    +appVersion: string;
+    +platform: string;
+    +product: string;
+    +productSub: string;
+    +userAgent: string;
+    +vendor: string;
+    +vendorSub: string;
+    +onLine: boolean;
+    sendBeacon(url: string, data?: Blob | Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer | FormData | string | null): boolean;
+    +hardwareConcurrency: number;
+    +storage: StorageManager;
     +serviceWorker: ServiceWorkerContainer;
 }
 
-declare var WorkerNavigator: {
-    prototype: WorkerNavigator;
-    new(): WorkerNavigator;
-};
-
-declare class WorkerUtils extends WindowBase64 {
+declare type WorkerUtils = interface extends WindowBase64 {
     +indexedDB: IDBFactory;
     +msIndexedDB: IDBFactory;
     +navigator: WorkerNavigator;
@@ -3942,21 +3763,17 @@ declare class WorkerUtils extends WindowBase64 {
 }
 
 declare class WritableStream<W = any> {
+    constructror<W>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>;
     +locked: boolean;
     abort(reason?: any): Promise<void>;
     getWriter(): WritableStreamDefaultWriter<W>;
 }
 
-declare var WritableStream: {
-    prototype: WritableStream;
-    new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>;
-};
-
-declare class WritableStreamDefaultController {
+declare type WritableStreamDefaultController = interface {
     error(error?: any): void;
 }
 
-declare class WritableStreamDefaultWriter<W = any> {
+declare type WritableStreamDefaultWriter<W = any> = interface {
     +closed: Promise<void>;
     +desiredSize: number | null;
     +ready: Promise<void>;
@@ -3966,12 +3783,19 @@ declare class WritableStreamDefaultWriter<W = any> {
     write(chunk: W): Promise<void>;
 }
 
-interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
-    "readystatechange": Event;
+type XMLHttpRequestEventMap = XMLHttpRequestEventTargetEventMap & {
+    "readystatechange": Event,
+    [key: string]: Event,
 }
 
-declare class XMLHttpRequest extends XMLHttpRequestEventTarget {
-    onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null;
+declare class XMLHttpRequest mixins XMLHttpRequestEventTarget {
+    constructor(): this;
+    +DONE: number;
+    +HEADERS_RECEIVED: number;
+    +LOADING: number;
+    +OPENED: number;
+    +UNSENT: number;
+    onreadystatechange: ((/*this: XMLHttpRequest, */ev: Event) => any) | null;
     /**
      * Returns client's state.
      */
@@ -4044,7 +3868,8 @@ declare class XMLHttpRequest extends XMLHttpRequestEventTarget {
      */
     overrideMimeType(mime: string): void;
     /**
-     * Initiates the request. The optional argument provides the request body. The argument is ignored if request method is GET or HEAD.
+     * Initiates the request. The body argument provides the request body, if any,
+     * and is ignored if the request method is GET or HEAD.
      * Throws an "InvalidStateError" DOMException if either state is not opened or the send() flag is set.
      */
     send(body?: BodyInit | null): void;
@@ -4060,62 +3885,45 @@ declare class XMLHttpRequest extends XMLHttpRequestEventTarget {
     +LOADING: number;
     +OPENED: number;
     +UNSENT: number;
-    addEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K: $Keys<XMLHttpRequestEventMap>>(type: K, listener: (/*this: XMLHttpRequest, */ev: $ElementType<XMLHttpRequestEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<XMLHttpRequestEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<XMLHttpRequestEventMap>>(type: K, listener: (/*this: XMLHttpRequest, */ev: $ElementType<XMLHttpRequestEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<XMLHttpRequestEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var XMLHttpRequest: {
-    prototype: XMLHttpRequest;
-    new(): XMLHttpRequest;
-    +DONE: number;
-    +HEADERS_RECEIVED: number;
-    +LOADING: number;
-    +OPENED: number;
-    +UNSENT: number;
-};
-
-interface XMLHttpRequestEventTargetEventMap {
-    "abort": ProgressEvent;
-    "error": ProgressEvent;
-    "load": ProgressEvent;
-    "loadend": ProgressEvent;
-    "loadstart": ProgressEvent;
-    "progress": ProgressEvent;
-    "timeout": ProgressEvent;
+type XMLHttpRequestEventTargetEventMap = & {
+    "abort": ProgressEvent,
+    "error": ProgressEvent,
+    "load": ProgressEvent,
+    "loadend": ProgressEvent,
+    "loadstart": ProgressEvent,
+    "progress": ProgressEvent,
+    "timeout": ProgressEvent,
+    [key: string]: Event,
 }
 
-declare class XMLHttpRequestEventTarget extends EventTarget {
-    onabort: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
-    onerror: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
-    onload: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
-    onloadend: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
-    onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
-    onprogress: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
-    ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
-    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+declare class XMLHttpRequestEventTarget mixins EventTarget {
+    constructor(): this;
+    onabort: ((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null;
+    onerror: ((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null;
+    onload: ((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null;
+    onloadend: ((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null;
+    onloadstart: ((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null;
+    onprogress: ((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null;
+    ontimeout: ((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null;
+    addEventListener<K: $Keys<XMLHttpRequestEventTargetEventMap>>(type: K, listener: (/*this: XMLHttpRequestEventTarget, */ev: $ElementType<XMLHttpRequestEventTargetEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<XMLHttpRequestEventTargetEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<XMLHttpRequestEventTargetEventMap>>(type: K, listener: (/*this: XMLHttpRequestEventTarget, */ev: $ElementType<XMLHttpRequestEventTargetEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<XMLHttpRequestEventTargetEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
 
-declare var XMLHttpRequestEventTarget: {
-    prototype: XMLHttpRequestEventTarget;
-    new(): XMLHttpRequestEventTarget;
-};
-
-declare class XMLHttpRequestUpload extends XMLHttpRequestEventTarget {
-    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+declare class XMLHttpRequestUpload mixins XMLHttpRequestEventTarget {
+    constructor(): this;
+    addEventListener<K: $Keys<XMLHttpRequestEventTargetEventMap>>(type: K, listener: (/*this: XMLHttpRequestUpload, */ev: $ElementType<XMLHttpRequestEventTargetEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K: $Keys<XMLHttpRequestEventTargetEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K: $Keys<XMLHttpRequestEventTargetEventMap>>(type: K, listener: (/*this: XMLHttpRequestUpload, */ev: $ElementType<XMLHttpRequestEventTargetEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K: $Keys<XMLHttpRequestEventTargetEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 }
-
-declare var XMLHttpRequestUpload: {
-    prototype: XMLHttpRequestUpload;
-    new(): XMLHttpRequestUpload;
-};
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
@@ -4167,7 +3975,7 @@ interface WritableStreamErrorCallback {
     (reason: any): void | PromiseLike<void>;
 }
 
-declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+declare var onmessage: ((/*this: DedicatedWorkerGlobalScope, */ev: MessageEvent) => any) | null;
 declare function close(): void;
 declare function postMessage(message: any, transfer?: Transferable[]): void;
 /**
@@ -4178,7 +3986,7 @@ declare function dispatchEvent(event: Event): boolean;
 declare var caches: CacheStorage;
 declare var isSecureContext: boolean;
 declare var location: WorkerLocation;
-declare var onerror: ((this: DedicatedWorkerGlobalScope, ev: ErrorEvent) => any) | null;
+declare var onerror: ((/*this: DedicatedWorkerGlobalScope, */ev: ErrorEvent) => any) | null;
 declare var performance: Performance;
 declare var self: WorkerGlobalScope;
 declare function msWriteProfilerMark(profilerMarkName: string): void;
@@ -4210,10 +4018,10 @@ declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response
 declare function queueMicrotask(callback: Function): void;
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-declare function addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+declare function addEventListener<K: $Keys<DedicatedWorkerGlobalScopeEventMap>>(type: K, listener: (/*this: DedicatedWorkerGlobalScope, */ev: $ElementType<DedicatedWorkerGlobalScopeEventMap, K>) => any, options?: boolean | AddEventListenerOptions): void;
+declare function addEventListener<K: $Keys<DedicatedWorkerGlobalScopeEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
+declare function removeEventListener<K: $Keys<DedicatedWorkerGlobalScopeEventMap>>(type: K, listener: (/*this: DedicatedWorkerGlobalScope, */ev: $ElementType<DedicatedWorkerGlobalScopeEventMap, K>) => any, options?: boolean | EventListenerOptions): void;
+declare function removeEventListener<K: $Keys<DedicatedWorkerGlobalScopeEventMap>>(type: K, listener: EventListenerObject | null, options?: boolean | EventListenerOptions): void;
 type BlobPart = BufferSource | Blob | string;
 type HeadersInit = Headers | string[][] | Record<string, string>;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string;
@@ -4251,6 +4059,7 @@ type Transferable = ArrayBuffer | MessagePort | ImageBitmap;
 type BinaryType = "blob" | "arraybuffer";
 type ClientTypes = "window" | "worker" | "sharedworker" | "all";
 type EndingType = "transparent" | "native";
+type FrameType = "auxiliary" | "top-level" | "nested" | "none";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "pending" | "done";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
@@ -4261,7 +4070,7 @@ type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type PushEncryptionKeyName = "p256dh" | "auth";
 type PushPermissionState = "denied" | "granted" | "prompt";
-type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin-only" | "origin-when-cross-origin" | "unsafe-url";
+type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "same-origin" | "origin" | "strict-origin" | "origin-when-cross-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
 type RequestCache = "default" | "no-store" | "reload" | "no-cache" | "force-cache" | "only-if-cached";
 type RequestCredentials = "omit" | "same-origin" | "include";
 type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";

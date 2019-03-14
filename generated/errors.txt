@@ -1,0 +1,10 @@
+Error ------------------------------------------------------------------------------------- lib/dom.generated.js:17073:9
+
+Unexpected token const
+
+   17073| declare const name: never;
+                  ^^^^^
+
+
+
+Found 1 error

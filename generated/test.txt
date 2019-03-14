@@ -1,0 +1,25 @@
+yarn run v1.13.0
+$ tsc --p ./tsconfig.json; node ./lib/index.js
+EventTarget class { signature: [ { type: 'EventTarget', param: [] } ] } undefined undefined
+AudioNode class undefined undefined undefined
+EventTarget class { signature: [ { type: 'EventTarget', param: [] } ] } undefined undefined
+Event class { signature: [ { type: 'Event', param: [Array] } ] } undefined undefined
+Event class { signature: [ { type: 'Event', param: [Array] } ] } undefined undefined
+EventTarget class { signature: [ { type: 'EventTarget', param: [] } ] } undefined undefined
+Node class undefined undefined undefined
+AudioScheduledSourceNode class undefined undefined undefined
+BaseAudioContext class undefined undefined undefined
+AudioNode class undefined undefined undefined
+EventTarget class { signature: [ { type: 'EventTarget', param: [] } ] } undefined undefined
+Event class { signature: [ { type: 'Event', param: [Array] } ] } undefined undefined
+AudioNode class undefined undefined undefined
+EventTarget class { signature: [ { type: 'EventTarget', param: [] } ] } undefined undefined
+Worklet class undefined undefined undefined
+AudioNode class undefined undefined undefined
+EventTarget class { signature: [ { type: 'EventTarget', param: [] } ] } undefined undefined
+Event class { signature: [ { type: 'Event', param: [Array] } ] } undefined undefined
+AudioNode class undefined undefined undefined
+EventTarget class { signature: [ { type: 'EventTarget', param: [] } ] } undefined undefined
+QueuingStrategy interface function Object() { [native code] } undefined undefined
+QueuingStrategy<ArrayBufferView>
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

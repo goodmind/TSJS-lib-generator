@@ -6,46 +6,46 @@ interface AudioParamMap extends ReadonlyMap<string, AudioParam> {
 }
 
 interface AudioTrackList {
-    [Symbol.iterator](): IterableIterator<AudioTrack>;
+    @@iterator(): Iterator<AudioTrack>;
 }
 
 interface CSSRuleList {
-    [Symbol.iterator](): IterableIterator<CSSRule>;
+    @@iterator(): Iterator<CSSRule>;
 }
 
 interface CSSStyleDeclaration {
-    [Symbol.iterator](): IterableIterator<string>;
+    @@iterator(): Iterator<string>;
 }
 
 interface ClientRectList {
-    [Symbol.iterator](): IterableIterator<ClientRect>;
+    @@iterator(): Iterator<ClientRect>;
 }
 
 interface DOMRectList {
-    [Symbol.iterator](): IterableIterator<DOMRect>;
+    @@iterator(): Iterator<DOMRect>;
 }
 
 interface DOMStringList {
-    [Symbol.iterator](): IterableIterator<string>;
+    @@iterator(): Iterator<string>;
 }
 
 interface DOMTokenList {
-    [Symbol.iterator](): IterableIterator<string>;
+    @@iterator(): Iterator<string>;
     entries(): IterableIterator<[number, string]>;
     keys(): IterableIterator<number>;
     values(): IterableIterator<string>;
 }
 
 interface DataTransferItemList {
-    [Symbol.iterator](): IterableIterator<DataTransferItem>;
+    @@iterator(): Iterator<DataTransferItem>;
 }
 
 interface FileList {
-    [Symbol.iterator](): IterableIterator<File>;
+    @@iterator(): Iterator<File>;
 }
 
 interface FormData {
-    [Symbol.iterator](): IterableIterator<[string, FormDataEntryValue]>;
+    @@iterator(): Iterator<[string, FormDataEntryValue]>;
     /**
      * Returns an array of key, value pairs for every entry in the list.
      */
@@ -61,27 +61,27 @@ interface FormData {
 }
 
 interface HTMLAllCollection {
-    [Symbol.iterator](): IterableIterator<Element>;
+    @@iterator(): Iterator<Element>;
 }
 
 interface HTMLCollectionBase {
-    [Symbol.iterator](): IterableIterator<Element>;
+    @@iterator(): Iterator<Element>;
 }
 
-interface HTMLCollectionOf<T extends Element> {
-    [Symbol.iterator](): IterableIterator<T>;
+interface HTMLCollectionOf<T: Element> {
+    @@iterator(): Iterator<T>;
 }
 
 interface HTMLFormElement {
-    [Symbol.iterator](): IterableIterator<Element>;
+    @@iterator(): Iterator<Element>;
 }
 
 interface HTMLSelectElement {
-    [Symbol.iterator](): IterableIterator<Element>;
+    @@iterator(): Iterator<Element>;
 }
 
 interface Headers {
-    [Symbol.iterator](): IterableIterator<[string, string]>;
+    @@iterator(): Iterator<[string, string]>;
     /**
      * Returns an iterator allowing to go through all key/value pairs contained in this object.
      */
@@ -96,20 +96,27 @@ interface Headers {
     values(): IterableIterator<string>;
 }
 
+interface MediaKeyStatusMap {
+    @@iterator(): Iterator<[BufferSource, MediaKeyStatus]>;
+    entries(): IterableIterator<[BufferSource, MediaKeyStatus]>;
+    keys(): IterableIterator<BufferSource>;
+    values(): IterableIterator<MediaKeyStatus>;
+}
+
 interface MediaList {
-    [Symbol.iterator](): IterableIterator<string>;
+    @@iterator(): Iterator<string>;
 }
 
 interface MimeTypeArray {
-    [Symbol.iterator](): IterableIterator<Plugin>;
+    @@iterator(): Iterator<Plugin>;
 }
 
 interface NamedNodeMap {
-    [Symbol.iterator](): IterableIterator<Attr>;
+    @@iterator(): Iterator<Attr>;
 }
 
 interface NodeList {
-    [Symbol.iterator](): IterableIterator<Node>;
+    @@iterator(): Iterator<Node>;
     /**
      * Returns an array of key, value pairs for every entry in the list.
      */
@@ -124,8 +131,8 @@ interface NodeList {
     values(): IterableIterator<Node>;
 }
 
-interface NodeListOf<TNode extends Node> {
-    [Symbol.iterator](): IterableIterator<TNode>;
+interface NodeListOf<TNode: Node> {
+    @@iterator(): Iterator<TNode>;
     /**
      * Returns an array of key, value pairs for every entry in the list.
      */
@@ -141,62 +148,62 @@ interface NodeListOf<TNode extends Node> {
 }
 
 interface Plugin {
-    [Symbol.iterator](): IterableIterator<MimeType>;
+    @@iterator(): Iterator<MimeType>;
 }
 
 interface PluginArray {
-    [Symbol.iterator](): IterableIterator<Plugin>;
+    @@iterator(): Iterator<Plugin>;
 }
 
 interface RTCStatsReport extends ReadonlyMap<string, any> {
 }
 
 interface SVGLengthList {
-    [Symbol.iterator](): IterableIterator<SVGLength>;
+    @@iterator(): Iterator<SVGLength>;
 }
 
 interface SVGNumberList {
-    [Symbol.iterator](): IterableIterator<SVGNumber>;
+    @@iterator(): Iterator<SVGNumber>;
 }
 
 interface SVGStringList {
-    [Symbol.iterator](): IterableIterator<string>;
+    @@iterator(): Iterator<string>;
 }
 
 interface SourceBufferList {
-    [Symbol.iterator](): IterableIterator<SourceBuffer>;
+    @@iterator(): Iterator<SourceBuffer>;
 }
 
 interface SpeechGrammarList {
-    [Symbol.iterator](): IterableIterator<SpeechGrammar>;
+    @@iterator(): Iterator<SpeechGrammar>;
 }
 
 interface SpeechRecognitionResult {
-    [Symbol.iterator](): IterableIterator<SpeechRecognitionAlternative>;
+    @@iterator(): Iterator<SpeechRecognitionAlternative>;
 }
 
 interface SpeechRecognitionResultList {
-    [Symbol.iterator](): IterableIterator<SpeechRecognitionResult>;
+    @@iterator(): Iterator<SpeechRecognitionResult>;
 }
 
 interface StyleSheetList {
-    [Symbol.iterator](): IterableIterator<StyleSheet>;
+    @@iterator(): Iterator<StyleSheet>;
 }
 
 interface TextTrackCueList {
-    [Symbol.iterator](): IterableIterator<TextTrackCue>;
+    @@iterator(): Iterator<TextTrackCue>;
 }
 
 interface TextTrackList {
-    [Symbol.iterator](): IterableIterator<TextTrack>;
+    @@iterator(): Iterator<TextTrack>;
 }
 
 interface TouchList {
-    [Symbol.iterator](): IterableIterator<Touch>;
+    @@iterator(): Iterator<Touch>;
 }
 
 interface URLSearchParams {
-    [Symbol.iterator](): IterableIterator<[string, string]>;
+    @@iterator(): Iterator<[string, string]>;
     /**
      * Returns an array of key, value pairs for every entry in the search params.
      */
@@ -212,5 +219,5 @@ interface URLSearchParams {
 }
 
 interface VideoTrackList {
-    [Symbol.iterator](): IterableIterator<VideoTrack>;
+    @@iterator(): Iterator<VideoTrack>;
 }
