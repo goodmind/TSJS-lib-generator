@@ -150,7 +150,7 @@
                       "getRandomValues": {
                           "name": "getRandomValues",
                           "override-signatures": [
-                              "getRandomValues<T extends Int8Array | Uint8ClampedArray | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array>(array: T): T"
+                              "getRandomValues<T: Int8Array | Uint8ClampedArray | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array>(array: T): T"
                           ]
                       }
                   }
@@ -339,13 +339,13 @@
                       "addListener": {
                           "deprecated": 1,
                           "override-signatures": [
-                              "addListener(listener: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null): void"
+                              "addListener(listener: ((/*this: MediaQueryList,*/ ev: MediaQueryListEvent) => any) | null): void"
                           ]
                       },
                       "removeListener": {
                           "deprecated": 1,
                           "override-signatures": [
-                              "removeListener(listener: ((this: MediaQueryList, ev: MediaQueryListEvent) => any) | null): void"
+                              "removeListener(listener: ((/*this: MediaQueryList,*/ ev: MediaQueryListEvent) => any) | null): void"
                           ]
                       }
                   }
@@ -427,7 +427,7 @@
               ],
               "constructor": {
                   "override-signatures": [
-                      "new<T>(typeArg: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>"
+                      "constructror<T>(typeArg: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>"
                   ]
               }
           },
@@ -437,7 +437,7 @@
                   "property": {
                       "event": {
                           "name": "event",
-                          "override-type": "Event | undefined",
+                          "override-type": "Event | void",
                           "deprecated": 1
                       },
                       "orientation": {
@@ -485,13 +485,13 @@
                       "adoptNode": {
                           "name": "adoptNode",
                           "override-signatures": [
-                              "adoptNode<T extends Node>(source: T): T"
+                              "adoptNode<T: Node>(source: T): T"
                           ]
                       },
                       "importNode": {
                           "name": "importNode",
                           "override-signatures": [
-                              "importNode<T extends Node>(importedNode: T, deep: boolean): T"
+                              "importNode<T: Node>(importedNode: T, deep: boolean): T"
                           ]
                       },
                       "open": {
@@ -637,25 +637,25 @@
                       "appendChild": {
                           "name": "appendChild",
                           "override-signatures": [
-                              "appendChild<T extends Node>(newChild: T): T"
+                              "appendChild<T: Node>(newChild: T): T"
                           ]
                       },
                       "insertBefore": {
                           "name": "insertBefore",
                           "override-signatures": [
-                              "insertBefore<T extends Node>(newChild: T, refChild: Node | null): T"
+                              "insertBefore<T: Node>(newChild: T, refChild: Node | null): T"
                           ]
                       },
                       "removeChild": {
                           "name": "removeChild",
                           "override-signatures": [
-                              "removeChild<T extends Node>(oldChild: T): T"
+                              "removeChild<T: Node>(oldChild: T): T"
                           ]
                       },
                       "replaceChild": {
                           "name": "replaceChild",
                           "override-signatures": [
-                              "replaceChild<T extends Node>(newChild: Node, oldChild: T): T"
+                              "replaceChild<T: Node>(newChild: Node, oldChild: T): T"
                           ]
                       }
                   }
@@ -721,7 +721,7 @@
                       "clear": {
                           "name": "clear",
                           "override-signatures": [
-                              "clear(): IDBRequest<undefined>"
+                              "clear(): IDBRequest<void>"
                           ]
                       },
                       "count": {
@@ -733,7 +733,7 @@
                       "delete": {
                           "name": "delete",
                           "override-signatures": [
-                              "delete(key: IDBValidKey | IDBKeyRange): IDBRequest<undefined>"
+                              "delete(key: IDBValidKey | IDBKeyRange): IDBRequest<void>"
                           ]
                       },
                       "put": {
@@ -745,7 +745,7 @@
                       "get": {
                           "name": "get",
                           "override-signatures": [
-                              "get(query: IDBValidKey | IDBKeyRange): IDBRequest<any | undefined>"
+                              "get(query: IDBValidKey | IDBKeyRange): IDBRequest<any | void>"
                           ]
                       },
                       "getAll": {
@@ -763,7 +763,7 @@
                       "getKey": {
                           "name": "getKey",
                           "override-signatures": [
-                              "getKey(query: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | undefined>"
+                              "getKey(query: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | void>"
                           ]
                       }
                   }
@@ -827,7 +827,7 @@
                       "get": {
                           "name": "get",
                           "override-signatures": [
-                              "get(key: IDBValidKey | IDBKeyRange): IDBRequest<any | undefined>"
+                              "get(key: IDBValidKey | IDBKeyRange): IDBRequest<any | void>"
                           ]
                       },
                       "getAll": {
@@ -845,7 +845,7 @@
                       "getKey": {
                           "name": "getKey",
                           "override-signatures": [
-                              "getKey(key: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | undefined>"
+                              "getKey(key: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | void>"
                           ]
                       }
                   }
@@ -1040,8 +1040,8 @@
               "exposed": "Window Worker",
               "constructor": {
                   "override-signatures": [
-                      "new(width: number, height: number): ImageData",
-                      "new(array: Uint8ClampedArray, width: number, height: number): ImageData"
+                      "constructor(width: number, height: number): ImageData",
+                      "constructor(array: Uint8ClampedArray, width: number, height: number): ImageData"
                   ]
               }
           },
@@ -1049,7 +1049,7 @@
               "name": "DOMException",
               "constructor": {
                   "override-signatures": [
-                      "new(message?: string, name?: string): DOMException"
+                      "constructor(message?: string, name?: string): DOMException"
                   ]
               }
           },
@@ -1285,7 +1285,7 @@
                       },
                       "delete": {
                           "override-signatures": [
-                              "delete(): IDBRequest<undefined>"
+                              "delete(): IDBRequest<void>"
                           ]
                       },
                       "update": {
@@ -1519,7 +1519,7 @@
           "DOMStringMap": {
               "name": "DOMStringMap",
               "override-index-signatures": [
-                  "[name: string]: string | undefined"
+                  "[name: string]: string | void"
               ]
           },
           "DOMImplementation": {
@@ -1704,7 +1704,7 @@
                       "getRegistration": {
                           "name": "getRegistration",
                           "override-signatures": [
-                              "getRegistration(clientURL?: string): Promise<ServiceWorkerRegistration | undefined>"
+                              "getRegistration(clientURL?: string): Promise<ServiceWorkerRegistration | void>"
                           ]
                       }
                   }
@@ -1818,31 +1818,31 @@
                   "property": {
                       "onloadstart": {
                           "name": "onloadstart",
-                          "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                          "override-type": "((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null"
                       },
                       "onprogress": {
                           "name": "onprogress",
-                          "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                          "override-type": "((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null"
                       },
                       "onabort": {
                           "name": "onabort",
-                          "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                          "override-type": "((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null"
                       },
                       "onerror": {
                           "name": "onerror",
-                          "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                          "override-type": "((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null"
                       },
                       "onload": {
                           "name": "onload",
-                          "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                          "override-type": "((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null"
                       },
                       "ontimeout": {
                           "name": "ontimeout",
-                          "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                          "override-type": "((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null"
                       },
                       "onloadend": {
                           "name": "onloadend",
-                          "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                          "override-type": "((/*this: XMLHttpRequest,*/ ev: ProgressEvent) => any) | null"
                       }
                   }
               },
@@ -1959,7 +1959,7 @@
               "name": "URL",
               "constructor": {
                   "override-signatures": [
-                      "new(url: string, base?: string | URL): URL"
+                      "constructor(url: string, base?: string | URL): URL"
                   ]
               }
           },
@@ -2215,7 +2215,7 @@
                       "match": {
                           "name": "match",
                           "override-signatures": [
-                              "match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>"
+                              "match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | void>"
                           ]
                       }
                   }
@@ -2228,7 +2228,7 @@
                       "match": {
                           "name": "match",
                           "override-signatures": [
-                              "match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>"
+                              "match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | void>"
                           ]
                       }
                   }
@@ -2253,8 +2253,8 @@
               "name": "KeyframeEffect",
               "constructor": {
                   "override-signatures": [
-                      "new(target: Element | null, keyframes: Keyframe[] | PropertyIndexedKeyframes | null, options?: number | KeyframeEffectOptions): KeyframeEffect",
-                      "new(source: KeyframeEffect): KeyframeEffect"
+                      "constructor(target: Element | null, keyframes: Keyframe[] | PropertyIndexedKeyframes | null, options?: number | KeyframeEffectOptions): KeyframeEffect",
+                      "constructor(source: KeyframeEffect): KeyframeEffect"
                   ]
               },
               "properties": {
@@ -2328,7 +2328,7 @@
               "override-exposed": "Window Worker",
               "constructor": {
                   "override-signatures": [
-                      "new(stringUrl: string | URL, options?: WorkerOptions): Worker"
+                      "constructor(stringUrl: string | URL, options?: WorkerOptions): Worker"
                   ]
               },
               "methods": {
@@ -2349,7 +2349,7 @@
                       "getRandomValues": {
                           "name": "getRandomValues",
                           "override-signatures": [
-                              "getRandomValues<T extends Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | null>(array: T): T"
+                              "getRandomValues<T: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | null>(array: T): T"
                           ]
                       }
                   }
@@ -2506,8 +2506,8 @@
               ],
               "constructor": {
                   "override-signatures": [
-                      "new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number, size?: undefined }): ReadableStream<Uint8Array>",
-                      "new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>"
+                      "constructor(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number, size?: void }): ReadableStream<Uint8Array>",
+                      "constructror<R>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>"
                   ]
               },
               "methods": {
@@ -2520,7 +2520,7 @@
                       },
                       "pipeThrough": {
                           "override-signatures": [
-                              "pipeThrough<T>({ writable, readable }: { writable: WritableStream<R>, readable: ReadableStream<T> }, options?: PipeOptions): ReadableStream<T>"
+                              "pipeThrough<T>(options: { writable: WritableStream<R>, readable: ReadableStream<T> }, options?: PipeOptions): ReadableStream<T>"
                           ]
                       },
                       "pipeTo": {
@@ -2572,14 +2572,14 @@
           "ReadableStreamBYOBReader": {
               "constructor": {
                   "override-signatures": [
-                      "new(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader"
+                      "constructor(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader"
                   ]
               },
               "methods": {
                   "method": {
                       "read": {
                           "override-signatures": [
-                              "read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>"
+                              "read<T: ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>"
                           ]
                       }
                   }
@@ -2610,7 +2610,7 @@
               "properties": {
                   "property": {
                       "byobRequest": {
-                          "override-type": "ReadableStreamBYOBRequest | undefined"
+                          "override-type": "ReadableStreamBYOBRequest | void"
                       }
                   }
               },
@@ -2638,7 +2638,7 @@
               "override-exposed": "Window Worker",
               "constructor": {
                   "override-signatures": [
-                      "new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>"
+                      "constructror<W>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>"
                   ]
               },
               "type-parameters": [
@@ -2703,7 +2703,7 @@
               },
               "constructor": {
                   "override-signatures": [
-                      "new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>"
+                      "constructror<I, O>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>"
                   ]
               }
           },
@@ -2731,7 +2731,7 @@
               "extends": "QueuingStrategy<ArrayBufferView>",
               "constructor": {
                   "override-signatures": [
-                      "new(options: { highWaterMark: number }): ByteLengthQueuingStrategy"
+                      "constructor(options: { highWaterMark: number }): ByteLengthQueuingStrategy"
                   ]
               }
           },
@@ -2739,7 +2739,7 @@
               "override-exposed": "Window Worker",
               "constructor": {
                   "override-signatures": [
-                      "new(options: { highWaterMark: number }): CountQueuingStrategy"
+                      "constructor(options: { highWaterMark: number }): CountQueuingStrategy"
                   ]
               },
               "methods": {
@@ -2921,13 +2921,13 @@
           "BaseKeyframe": {
               "name": "Keyframe",
               "override-index-signatures": [
-                  "[property: string]: string | number | null | undefined"
+                  "[property: string]: string | number | null | void"
               ]
           },
           "BasePropertyIndexedKeyframe": {
               "name": "PropertyIndexedKeyframes",
               "override-index-signatures": [
-                  "[property: string]: string | string[] | number | null | (number | null)[] | undefined"
+                  "[property: string]: string | string[] | number | null | (number | null)[] | void"
               ]
           },
           "BaseComputedKeyframe": {
@@ -2949,7 +2949,7 @@
                   }
               },
               "override-index-signatures": [
-                  "[property: string]: string | number | null | undefined"
+                  "[property: string]: string | number | null | void"
               ]
           },
           "PipeOptions": {
@@ -2981,6 +2981,7 @@
                       },
                       "size": {
                           "override-type": "QueuingStrategySizeCallback<T>",
+                          "readonly": 1,
                           "nullable": 0
                       }
                   }
@@ -3028,7 +3029,7 @@
                           "nullable": 0
                       },
                       "type": {
-                          "override-type": "undefined"
+                          "override-type": "void"
                       }
                   }
               }
@@ -3056,7 +3057,7 @@
                           "nullable": 0
                       },
                       "type": {
-                          "override-type": "undefined"
+                          "override-type": "void"
                       }
                   }
               }
@@ -3087,10 +3088,10 @@
                           "nullable": 0
                       },
                       "readableType": {
-                          "override-type": "undefined"
+                          "override-type": "void"
                       },
                       "writableType": {
-                          "override-type": "undefined"
+                          "override-type": "void"
                       }
                   }
               }

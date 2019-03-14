@@ -417,22 +417,6 @@
                   }
               ]
           },
-          "BroadcastChannelEventMap": {
-              "name": "BroadcastChannelEventMap",
-              "properties": {
-                  "property": {
-                      "message": {
-                          "name": "message",
-                          "override-type": "MessageEvent"
-                      },
-                      "messageerror": {
-                          "name": "messageerror",
-                          "override-type": "MessageEvent"
-                      }
-                  }
-              },
-              "no-interface-object": "1"
-          },
           "CSSStyleDeclaration": {
               "name": "CSSStyleDeclaration",
               "properties": {
@@ -523,7 +507,7 @@
               "name": "URLSearchParams",
               "constructor": {
                   "override-signatures": [
-                      "new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams"
+                      "constructor(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams"
                   ]
               }
           },
@@ -540,8 +524,8 @@
                   }
               }
           },
-          "NodeListOf<TNode extends Node>": {
-              "name": "NodeListOf<TNode extends Node>",
+          "NodeListOf<TNode: Node>": {
+              "name": "NodeListOf<TNode: Node>",
               "exposed": "Window",
               "extends": "NodeList",
               "properties": {
@@ -575,8 +559,8 @@
                   ]
               }
           },
-          "HTMLCollectionOf<T extends Element>": {
-              "name": "HTMLCollectionOf<T extends Element>",
+          "HTMLCollectionOf<T: Element>": {
+              "name": "HTMLCollectionOf<T: Element>",
               "exposed": "Window",
               "extends": "HTMLCollection",
               "methods": {
@@ -671,8 +655,8 @@
                       "closest": {
                           "name": "closest",
                           "override-signatures": [
-                              "closest<K extends keyof HTMLElementTagNameMap>(selector: K): HTMLElementTagNameMap[K] | null",
-                              "closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null",
+                              "closest<K: $Keys<HTMLElementTagNameMap>>(selector: K): $ElementType<HTMLElementTagNameMap, K> | null",
+                              "closest<K: $Keys<SVGElementTagNameMap>>(selector: K): $ElementType<SVGElementTagNameMap, K> | null",
                               "closest(selector: string): Element | null"
                           ]
                       },
@@ -717,7 +701,7 @@
                           "name": "createElementNS",
                           "additional-signatures": [
                               "createElementNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", qualifiedName: string): HTMLElement",
-                              "createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: K): SVGElementTagNameMap[K]",
+                              "createElementNS<K: $Keys<SVGElementTagNameMap>>(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: K): $ElementType<SVGElementTagNameMap, K>",
                               "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: string): SVGElement",
                               "createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element"
                           ]
@@ -1169,7 +1153,7 @@
               "exposed": "Window",
               "constructor": {
                   "override-signatures": [
-                      "new(): HTMLMainElement"
+                      "constructor(): HTMLMainElement"
                   ]
               }
           },
