@@ -158,255 +158,184 @@ function isEventHandler(p: Browser.Property) {
   return typeof p["event-handler"] === "string";
 }
 
-export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
-  // Global print target
-  const printer = createTextWriter("\n");
+export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
+    // Global print target
+    const printer = createTextWriter("\n");
 
-  const pollutor = getElements(webidl.interfaces, "interface").find(i =>
-    flavor === Flavor.Web ? !!i["primary-global"] : !!i.global
-  );
+    const pollutor = getElements(webidl.interfaces, "interface").find(i => flavor === Flavor.Web ? !!i["primary-global"] : !!i.global);
 
-  const allNonCallbackInterfaces = getElements(
-    webidl.interfaces,
-    "interface"
-  ).concat(getElements(webidl.mixins, "mixin"));
-  const allInterfaces = getElements(webidl.interfaces, "interface").concat(
-    getElements(webidl["callback-interfaces"], "interface"),
-    getElements(webidl.mixins, "mixin")
-  );
+    const allNonCallbackInterfaces = getElements(webidl.interfaces, "interface").concat(getElements(webidl.mixins, "mixin"));
+    const allInterfaces = getElements(webidl.interfaces, "interface").concat(
+        getElements(webidl["callback-interfaces"], "interface"),
+        getElements(webidl.mixins, "mixin"));
 
-  const allInterfacesMap = toNameMap(allInterfaces);
-  const allLegacyWindowAliases = flatMap(
-    allInterfaces,
-    i => i["legacy-window-alias"]
-  );
-  const allDictionariesMap = webidl.dictionaries
-    ? webidl.dictionaries.dictionary
-    : {};
-  const allEnumsMap = webidl.enums ? webidl.enums.enum : {};
-  const allCallbackFunctionsMap = webidl["callback-functions"]
-    ? webidl["callback-functions"]!["callback-function"]
-    : {};
-  const allTypeDefsMap = new Set(
-    webidl.typedefs && webidl.typedefs.typedef.map(td => td["new-type"])
-  );
+    const allInterfacesMap = toNameMap(allInterfaces);
+    const allLegacyWindowAliases = flatMap(allInterfaces, i => i["legacy-window-alias"]);
+    const allDictionariesMap = webidl.dictionaries ? webidl.dictionaries.dictionary : {};
+    const allEnumsMap = webidl.enums ? webidl.enums.enum : {};
+    const allCallbackFunctionsMap = webidl["callback-functions"] ? webidl["callback-functions"]!["callback-function"] : {};
+    const allTypeDefsMap = new Set(webidl.typedefs && webidl.typedefs.typedef.map(td => td["new-type"]));
 
-  /// Event name to event type map
-  const eNameToEType = arrayToMap(
-    flatMap(allNonCallbackInterfaces, i => (i.events ? i.events.event : [])),
-    e => e.name,
-    e => eventTypeMap[e.name] || e.type
-  );
+    /// Event name to event type map
+    const eNameToEType = arrayToMap(flatMap(allNonCallbackInterfaces, i => i.events ? i.events.event : []), e => e.name, e => eventTypeMap[e.name] || e.type);
 
-  /// Tag name to element name map
-  const tagNameToEleName = getTagNameToElementNameMap();
+    /// Tag name to element name map
+    const tagNameToEleName = getTagNameToElementNameMap();
 
-  /// Interface name to all its implemented / inherited interfaces name list map
-  /// e.g. If i1 depends on i2, i2 should be in dependencyMap.[i1.Name]
-  const iNameToIDependList = arrayToMap(
-    allNonCallbackInterfaces,
-    i => i.name,
-    i => getExtendList(i.name).concat(getImplementList(i.name))
-  );
+    /// Interface name to all its implemented / inherited interfaces name list map
+    /// e.g. If i1 depends on i2, i2 should be in dependencyMap.[i1.Name]
+    const iNameToIDependList = arrayToMap(allNonCallbackInterfaces, i => i.name, i => getExtendList(i.name).concat(getImplementList(i.name)));
 
-  /// Distinct event type list, used in the "createEvent" function
-  const distinctETypeList = distinct(
-    flatMap(allNonCallbackInterfaces, i =>
-      i.events ? i.events.event.map(e => e.type) : []
-    ).concat(
-      allNonCallbackInterfaces
-        .filter(
-          i =>
-            i.extends && i.extends.endsWith("Event") && i.name.endsWith("Event")
-        )
-        .map(i => i.name)
-    )
-  ).sort();
+    /// Distinct event type list, used in the "createEvent" function
+    const distinctETypeList = distinct(
+        flatMap(allNonCallbackInterfaces, i => i.events ? i.events.event.map(e => e.type) : [])
+            .concat(allNonCallbackInterfaces.filter(i => i.extends && i.extends.endsWith("Event") && i.name.endsWith("Event")).map(i => i.name))
+    ).sort();
 
-  /// Interface name to its related eventhandler name list map
-  /// Note:
-  /// In the xml file, each event handler has
-  /// 1. eventhanlder name: "onready", "onabort" etc.
-  /// 2. the event name that it handles: "ready", "SVGAbort" etc.
-  /// And they don't just differ by an "on" prefix!
-  const iNameToEhList = arrayToMap(
-    allInterfaces,
-    i => i.name,
-    i =>
-      !i.properties
-        ? []
-        : mapDefined<Browser.Property, EventHandler>(
-            mapToArray(i.properties.property),
-            p => {
-              const eventName = p["event-handler"]!;
-              if (eventName === undefined) return undefined;
-              const eType = eNameToEType[eventName] || defaultEventType;
-              const eventType =
-                eType === "Event" || dependsOn(eType, "Event")
-                  ? eType
-                  : defaultEventType;
-              return { name: p.name, eventName, eventType };
+    /// Interface name to its related eventhandler name list map
+    /// Note:
+    /// In the xml file, each event handler has
+    /// 1. eventhanlder name: "onready", "onabort" etc.
+    /// 2. the event name that it handles: "ready", "SVGAbort" etc.
+    /// And they don't just differ by an "on" prefix!
+    const iNameToEhList = arrayToMap(allInterfaces, i => i.name, i =>
+        !i.properties ? [] : mapDefined<Browser.Property, EventHandler>(mapToArray(i.properties.property), p => {
+            const eventName = p["event-handler"]!;
+            if (eventName === undefined) return undefined;
+            const eType = eNameToEType[eventName] || defaultEventType;
+            const eventType = eType === "Event" || dependsOn(eType, "Event") ? eType : defaultEventType;
+            return { name: p.name, eventName, eventType };
+        }));
+
+    const iNameToConstList = arrayToMap(allInterfaces, i => i.name, i =>
+        !i.constants ? [] : mapToArray(i.constants.constant));
+
+    // Map of interface.Name -> List of base interfaces with event handlers
+    const iNameToEhParents = arrayToMap(allInterfaces, i => i.name, getParentsWithEventHandler);
+
+    const iNameToConstParents = arrayToMap(allInterfaces, i => i.name, getParentsWithConstant);
+
+    return flavor === Flavor.ES6Iterators ? emitES6DomIterators() : emit();
+
+    function getTagNameToElementNameMap() {
+        const htmlResult: Record<string, string> = {};
+        const htmlDeprecatedResult: Record<string, string> = {};
+        const svgResult: Record<string, string> = {};
+        for (const i of allNonCallbackInterfaces) {
+            if (i.element) {
+                for (const e of i.element) {
+                    if (e.namespace === "SVG") {
+                        svgResult[e.name] = i.name;
+                    }
+                    else if (e.deprecated) {
+                        htmlDeprecatedResult[e.name] = i.name;
+                    }
+                    else {
+                        htmlResult[e.name] = i.name;
+                    }
+                }
             }
-          )
-  );
-
-  const iNameToConstList = arrayToMap(
-    allInterfaces,
-    i => i.name,
-    i => (!i.constants ? [] : mapToArray(i.constants.constant))
-  );
-
-  // Map of interface.Name -> List of base interfaces with event handlers
-  const iNameToEhParents = arrayToMap(
-    allInterfaces,
-    i => i.name,
-    getParentsWithEventHandler
-  );
-
-  const iNameToConstParents = arrayToMap(
-    allInterfaces,
-    i => i.name,
-    getParentsWithConstant
-  );
-
-  return flavor === Flavor.ES6Iterators ? emitES6DomIterators() : emit();
-
-  function getTagNameToElementNameMap() {
-    const htmlResult: Record<string, string> = {};
-    const htmlDeprecatedResult: Record<string, string> = {};
-    const svgResult: Record<string, string> = {};
-    for (const i of allNonCallbackInterfaces) {
-      if (i.element) {
-        for (const e of i.element) {
-          if (e.namespace === "SVG") {
-            svgResult[e.name] = i.name;
-          } else if (e.deprecated) {
-            htmlDeprecatedResult[e.name] = i.name;
-          } else {
-            htmlResult[e.name] = i.name;
-          }
         }
-      }
-    }
-    return { htmlResult, htmlDeprecatedResult, svgResult };
-  }
-
-  function getExtendList(iName: string): string[] {
-    const i = allInterfacesMap[iName];
-    if (!i || !i.extends || i.extends === "Object") return [];
-    else return getExtendList(i.extends).concat(i.extends);
-  }
-
-  function getImplementList(iName: string) {
-    const i = allInterfacesMap[iName];
-    return (i && i.implements) || [];
-  }
-
-  function getParentsWithEventHandler(i: Browser.Interface) {
-    function getParentEventHandler(i: Browser.Interface): Browser.Interface[] {
-      const hasEventListener =
-        iNameToEhList[i.name] && iNameToEhList[i.name].length;
-      if (hasEventListener) {
-        return [i];
-      }
-      const ehParents = getParentsWithEventHandler(i);
-      if (ehParents.length > 1) {
-        return [i];
-      }
-      return ehParents;
+        return { htmlResult, htmlDeprecatedResult, svgResult };
     }
 
-    const iExtends = i.extends && i.extends.replace(/<.*>$/, "");
-    const parentWithEventHandler =
-      (allInterfacesMap[iExtends] &&
-        getParentEventHandler(allInterfacesMap[iExtends])) ||
-      [];
-    const mixinsWithEventHandler = flatMap(i.implements || [], i =>
-      getParentEventHandler(allInterfacesMap[i])
-    );
-
-    return distinct(parentWithEventHandler.concat(mixinsWithEventHandler));
-  }
-
-  function getParentsWithConstant(i: Browser.Interface) {
-    function getParentConstant(i: Browser.Interface): Browser.Interface[] {
-      const hasConst =
-        iNameToConstList[i.name] && iNameToConstList[i.name].length;
-      return (hasConst ? [i] : []).concat(getParentsWithConstant(i));
+    function getExtendList(iName: string): string[] {
+        const i = allInterfacesMap[iName];
+        if (!i || !i.extends || i.extends === "Object") return [];
+        else return getExtendList(i.extends).concat(i.extends);
     }
 
-    const mixinsWithConstant = flatMap(i.implements || [], i =>
-      getParentConstant(allInterfacesMap[i])
-    );
+    function getImplementList(iName: string) {
+        const i = allInterfacesMap[iName];
+        return i && i.implements || [];
+    }
 
-    return distinct(mixinsWithConstant);
-  }
+    function getParentsWithEventHandler(i: Browser.Interface) {
+        function getParentEventHandler(i: Browser.Interface): Browser.Interface[] {
+            const hasEventListener = iNameToEhList[i.name] && iNameToEhList[i.name].length;
+            if (hasEventListener) {
+                return [i];
+            }
+            const ehParents = getParentsWithEventHandler(i);
+            if (ehParents.length > 1) {
+                return [i];
+            }
+            return ehParents;
+        }
 
-  function getEventTypeInInterface(eName: string, i: Browser.Interface) {
-    if (i.events) {
-      const event = i.events.event.find(e => e.name === eName);
-      if (event && event.type) {
-        return event.type;
+        const iExtends = i.extends && i.extends.replace(/<.*>$/, '');
+        const parentWithEventHandler = allInterfacesMap[iExtends] && getParentEventHandler(allInterfacesMap[iExtends]) || [];
+        const mixinsWithEventHandler = flatMap(i.implements || [], i => getParentEventHandler(allInterfacesMap[i]));
+
+        return distinct(parentWithEventHandler.concat(mixinsWithEventHandler));
+    }
+
+    function getParentsWithConstant(i: Browser.Interface) {
+        function getParentConstant(i: Browser.Interface): Browser.Interface[] {
+            const hasConst = iNameToConstList[i.name] && iNameToConstList[i.name].length;
+            return (hasConst ? [i] : []).concat(getParentsWithConstant(i));
+        }
+
+        const mixinsWithConstant = flatMap(i.implements || [], i => getParentConstant(allInterfacesMap[i]));
+
+        return distinct(mixinsWithConstant);
+    }
+
+    function getEventTypeInInterface(eName: string, i: Browser.Interface) {
+        if (i.events) {
+            const event = i.events.event.find(e => e.name === eName);
+            if (event && event.type) {
+                return event.type;
+            }
+        }
+        return eNameToEType[eName] || "Event";
+    }
+
+    /// Determine if interface1 depends on interface2
+    function dependsOn(i1Name: string, i2Name: string) {
+        return iNameToIDependList[i1Name]
+            ? iNameToIDependList[i1Name].includes(i2Name)
+            : i2Name === "Object";
+    }
+
+    /// Get typescript type using object dom type, object name, and it's associated interface name
+    function convertDomTypeToTsType(obj: Browser.Typed): string {
+        if (obj["override-type"]) return obj["override-type"]!;
+        if (!obj.type) throw new Error("Missing type " + JSON.stringify(obj));
+        const type = convertDomTypeToTsTypeWorker(obj);
+        return type.nullable ? makeNullable(type.name) : type.name;
+    }
+
+    function convertDomTypeToTsTypeWorker(obj: Browser.Typed): { name: string; nullable: boolean } {
+        let type;
+        if (typeof obj.type === "string") {
+            type = { name: convertDomTypeToTsTypeSimple(obj.type), nullable: !!obj.nullable };
+        }
+        else {
+            const types = obj.type.map(convertDomTypeToTsTypeWorker);
+            const isAny = types.find(t => t.name === "any");
+            if (isAny) {
+                type = {
+                    name: "any",
+                    nullable: false
+                };
+            }
+            else {
+              type = {
+                  name: types.map(t => t.name).join(" | "),
+                  nullable: !!types.find(t => t.nullable) || !!obj.nullable
+              };
+          }
       }
-    }
-    return eNameToEType[eName] || "Event";
-  }
 
-  /// Determine if interface1 depends on interface2
-  function dependsOn(i1Name: string, i2Name: string) {
-    return iNameToIDependList[i1Name]
-      ? iNameToIDependList[i1Name].includes(i2Name)
-      : i2Name === "Object";
-  }
+      const subtypes = arrayify(obj.subtype).map(convertDomTypeToTsTypeWorker);
+      const subtypeString = subtypes.map(subtype => subtype.nullable ? makeNullable(subtype.name) : subtype.name).join(", ");
 
-  /// Get typescript type using object dom type, object name, and it's associated interface name
-  function convertDomTypeToTsType(obj: Browser.Typed): string {
-    if (obj["override-type"]) return obj["override-type"]!;
-    if (!obj.type) throw new Error("Missing type " + JSON.stringify(obj));
-    const type = convertDomTypeToTsTypeWorker(obj);
-    return type.nullable ? makeNullable(type.name) : type.name;
-  }
-
-  function convertDomTypeToTsTypeWorker(
-    obj: Browser.Typed
-  ): { name: string; nullable: boolean } {
-    let type;
-    if (typeof obj.type === "string") {
-      type = {
-        name: convertDomTypeToTsTypeSimple(obj.type),
-        nullable: !!obj.nullable
+      return {
+          name: (type.name === "Array" && subtypeString) ? makeArrayType(subtypeString, obj) : `${type.name}${subtypeString ? `<${subtypeString}>` : ""}`,
+          nullable: type.nullable
       };
-    } else {
-      const types = obj.type.map(convertDomTypeToTsTypeWorker);
-      const isAny = types.find(t => t.name === "any");
-      if (isAny) {
-        type = {
-          name: "any",
-          nullable: false
-        };
-      } else {
-        type = {
-          name: types.map(t => t.name).join(" | "),
-          nullable: !!types.find(t => t.nullable) || !!obj.nullable
-        };
-      }
     }
-
-    const subtypes = arrayify(obj.subtype).map(convertDomTypeToTsTypeWorker);
-    const subtypeString = subtypes
-      .map(subtype =>
-        subtype.nullable ? makeNullable(subtype.name) : subtype.name
-      )
-      .join(", ");
-
-    return {
-      name:
-        type.name === "Array" && subtypeString
-          ? makeArrayType(subtypeString, obj)
-          : `${type.name}${subtypeString ? `<${subtypeString}>` : ""}`,
-      nullable: type.nullable
-    };
-  }
 
   function makeArrayType(elementType: string, obj: Browser.Typed): string {
     if (
@@ -1570,6 +1499,7 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
       mapToArray(dict.members.member)
         .sort(compareName)
         .forEach(m => {
+          // @ts-ignore TS2339
           const readOnlyModifier = m.readonly === 1 ? "+" : "";
           printer.printLine(
             `${readOnlyModifier}${m.name}${m.required === 1 ? "" : "?"}: ${convertDomTypeToTsType(
