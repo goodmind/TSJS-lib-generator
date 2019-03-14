@@ -35,9 +35,10 @@ function emitDom() {
         fs.mkdirSync(outputFolder);
     }
 
-    const tsWebOutput = path.join(outputFolder, "dom.generated.d.ts");
-    const tsWebIteratorsOutput = path.join(outputFolder, "dom.iterable.generated.d.ts");
-    const tsWorkerOutput = path.join(outputFolder, "webworker.generated.d.ts");
+    const tsWebOutput = path.join(outputFolder, "dom.generated.js");
+    const tsWebIteratorsOutput = path.join(outputFolder, "dom.iterable.generated.js");
+    // Ignore webworker for Flow
+    const tsWorkerOutput = path.join(outputFolder, "..", "webworker.generated.js");
 
 
     const overriddenItems = require(path.join(inputFolder, "overridingTypes.json"));

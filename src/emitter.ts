@@ -926,7 +926,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         : i.iterator.kind === "iterable"
         ? "number"
         : value;
-    const name = i.name.replace(/ extends \w+/, "");
+    const name = i.name.replace(/: \w+/, "");
     printer.printLine(
       `forEach(callbackfn: (value: ${value}, key: ${key}, parent: ${name}) => void, thisArg?: any): void;`
     );
@@ -1269,6 +1269,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
       printer.print("& {");
       printer.endLine();
       printer.increaseIndent();
+      if (i.name === 'BroadcastChannel') console.log(i, iNameToEhList[i.name])
       iNameToEhList[i.name]
         .sort(compareName)
         .forEach(emitInterfaceEventMapEntry);
